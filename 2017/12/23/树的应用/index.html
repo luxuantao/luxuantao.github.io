@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #FFFFCC; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数据结构,c," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Welcome to Luson's home" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="又是六百多行。">
+<meta name="keywords" content="数据结构,c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树的应用">
+<meta property="og:url" content="https://luxuantao.github.io/2017/12/23/树的应用/index.html">
+<meta property="og:site_name" content="Welcome to Luson&#39;s home">
+<meta property="og:description" content="又是六百多行。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-23T04:15:54.244Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树的应用">
+<meta name="twitter:description" content="又是六百多行。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luxuantao.github.io/2017/12/23/树的应用/"/>
+
+
+
+
+
+  <title>树的应用 | Welcome to Luson's home</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+	 <a href="https://github.com/luxuantao">
+	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+	 </a>
+	 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to Luson's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就怕你宁愿流泪望天却不昂首向前</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2017/12/23/树的应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陆轩韬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Luson's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">树的应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-23T12:13:29+08:00">
+                2017-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/23/树的应用/" class="leancloud_visitors" data-flag-title="树的应用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃&nbsp; | &nbsp;</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  3,233 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  16 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>又是六百多行。</p>
+<a id="more"></a>
+<p>数据结构课第三次补充作业，树的各种应用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div><div class="line">568</div><div class="line">569</div><div class="line">570</div><div class="line">571</div><div class="line">572</div><div class="line">573</div><div class="line">574</div><div class="line">575</div><div class="line">576</div><div class="line">577</div><div class="line">578</div><div class="line">579</div><div class="line">580</div><div class="line">581</div><div class="line">582</div><div class="line">583</div><div class="line">584</div><div class="line">585</div><div class="line">586</div><div class="line">587</div><div class="line">588</div><div class="line">589</div><div class="line">590</div><div class="line">591</div><div class="line">592</div><div class="line">593</div><div class="line">594</div><div class="line">595</div><div class="line">596</div><div class="line">597</div><div class="line">598</div><div class="line">599</div><div class="line">600</div><div class="line">601</div><div class="line">602</div><div class="line">603</div><div class="line">604</div><div class="line">605</div><div class="line">606</div><div class="line">607</div><div class="line">608</div><div class="line">609</div><div class="line">610</div><div class="line">611</div><div class="line">612</div><div class="line">613</div><div class="line">614</div><div class="line">615</div><div class="line">616</div><div class="line">617</div><div class="line">618</div><div class="line">619</div><div class="line">620</div><div class="line">621</div><div class="line">622</div><div class="line">623</div><div class="line">624</div><div class="line">625</div><div class="line">626</div><div class="line">627</div><div class="line">628</div><div class="line">629</div><div class="line">630</div><div class="line">631</div><div class="line">632</div><div class="line">633</div><div class="line">634</div><div class="line">635</div><div class="line">636</div><div class="line">637</div><div class="line">638</div><div class="line">639</div><div class="line">640</div><div class="line">641</div><div class="line">642</div><div class="line">643</div><div class="line">644</div><div class="line">645</div><div class="line">646</div><div class="line">647</div><div class="line">648</div><div class="line">649</div><div class="line">650</div><div class="line">651</div><div class="line">652</div><div class="line">653</div><div class="line">654</div><div class="line">655</div><div class="line">656</div><div class="line">657</div><div class="line">658</div><div class="line">659</div><div class="line">660</div><div class="line">661</div><div class="line">662</div><div class="line">663</div><div class="line">664</div><div class="line">665</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX 1024</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXM 30</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">char</span> data;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></div><div class="line">&#125; NODE;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">AVL_node</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">char</span> data;</div><div class="line">    <span class="keyword">int</span> bel;</div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AVL_node</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></div><div class="line">&#125; AVL_NODE;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LRtag</span>// 左右标志表示树节点</span></div><div class="line"><span class="class">&#123;</span></div><div class="line">	<span class="keyword">char</span> data;</div><div class="line">	<span class="keyword">int</span> ltag;</div><div class="line">	<span class="keyword">int</span> rtag;</div><div class="line">&#125; LRBTree;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">move</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">	<span class="keyword">int</span> a;</div><div class="line">	<span class="keyword">int</span> b;</div><div class="line">&#125; MOVE;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">stack</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">	<span class="keyword">int</span> x;</div><div class="line">	<span class="keyword">int</span> y;</div><div class="line">	<span class="keyword">int</span> d;</div><div class="line">&#125; STACK;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">queen_node</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">	<span class="keyword">int</span> r;</div><div class="line">	<span class="keyword">int</span> c;</div><div class="line">	<span class="keyword">int</span> tag;</div><div class="line">&#125; Q_NODE;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">huffman_node</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">char</span> data;</div><div class="line">    <span class="keyword">int</span> num; <span class="comment">//节点个数</span></div><div class="line">    <span class="keyword">int</span> mindata; <span class="comment">//是序列中的第几个</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">huffman_node</span> *<span class="title">lchild</span>, *<span class="title">rchild</span>;</span></div><div class="line">&#125; HUFFMAN_NODE;</div><div class="line"></div><div class="line"><span class="keyword">char</span> preOrder[MAX];</div><div class="line"><span class="keyword">char</span> inOrder[MAX];</div><div class="line"><span class="keyword">char</span> postOrder[MAX];</div><div class="line"></div><div class="line">STACK s[MAXM * MAXM]; <span class="comment">//栈s</span></div><div class="line"><span class="keyword">int</span> top; <span class="comment">//top是栈 s 的栈顶指针</span></div><div class="line"><span class="keyword">int</span> maze[MAXM][MAXM];</div><div class="line"><span class="keyword">int</span> mark[MAXM][MAXM];</div><div class="line">MOVE mv[<span class="number">8</span>];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(NODE *root, <span class="keyword">char</span> a, NODE **p_p, NODE **p_q)</span> <span class="comment">//在二叉查找树中查找键值为a的结点</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> times = <span class="number">0</span>;</div><div class="line">    *p_p = <span class="literal">NULL</span>;</div><div class="line">    *p_q = root;</div><div class="line">    <span class="keyword">while</span>(*p_q != <span class="literal">NULL</span>)   <span class="comment">//*p_q为空，算法结束</span></div><div class="line">    &#123;</div><div class="line">    	times++;</div><div class="line">        <span class="keyword">if</span>((*p_q)-&gt;data == a) <span class="keyword">return</span> times;  <span class="comment">//查找成功</span></div><div class="line">        *p_p = *p_q;</div><div class="line">        <span class="keyword">if</span>(a &lt; (*p_q) -&gt;data)  <span class="comment">//a小于当前结点值</span></div><div class="line">            *p_q = (*p_q)-&gt;lchild;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        	*p_q = (*p_q)-&gt;rchild;  <span class="comment">//a大于当前结点值</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> times;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(NODE **root, <span class="keyword">char</span> a)</span> <span class="comment">//插入键值为a的结点</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	NODE *p, *q, *r;</div><div class="line">	search(*root, a, &amp;p, &amp;q);  <span class="comment">//查找键值为a的结点</span></div><div class="line">	<span class="keyword">if</span>(q != <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//已存在键值为a的结点，返回l</span></div><div class="line">	r = (NODE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(NODE));</div><div class="line">	r-&gt;data = a;</div><div class="line">	r-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line">	r-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>) <span class="comment">//查找树为空</span></div><div class="line">    	*root = r;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(p-&gt;data &gt; a) <span class="comment">//查找路径中最后一个结点的值大于a</span></div><div class="line">        p-&gt;lchild = r; <span class="comment">//将新节点插到左子树</span></div><div class="line">    <span class="keyword">else</span></div><div class="line">    	p-&gt;rchild = r; <span class="comment">//将新节点插到右子树</span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//插入成功返回0</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">inorder_print</span><span class="params">(NODE *t)</span> <span class="comment">//递归中序遍历查找二叉树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(t != <span class="literal">NULL</span>)</div><div class="line">    &#123;</div><div class="line">        inorder_print(t-&gt;lchild);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,t-&gt;data);</div><div class="line">    	inorder_print(t-&gt;rchild);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">avl_inorder_print</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//递归中序遍历平衡二叉树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(t != <span class="literal">NULL</span>)</div><div class="line">    &#123;</div><div class="line">        avl_inorder_print(t-&gt;lchild);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%c "</span>,t-&gt;data);</div><div class="line">    	avl_inorder_print(t-&gt;rchild);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">int</span> num = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">avl_inorder_print_tostring</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//递归中序遍历平衡二叉树,输出到数组</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(t != <span class="literal">NULL</span>)</div><div class="line">    &#123;</div><div class="line">        avl_inorder_print_tostring(t-&gt;lchild);</div><div class="line">        inOrder[num++] = t-&gt;data; <span class="comment">//存下来，借此判断是否是查找树</span></div><div class="line">    	avl_inorder_print_tostring(t-&gt;rchild);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">siftdown</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> i, <span class="keyword">int</span> n)</span> <span class="comment">//堆调整</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> j,t,times=<span class="number">0</span>;</div><div class="line">	t = a[i];</div><div class="line">	<span class="keyword">while</span>((j = <span class="number">2</span>*i+<span class="number">1</span>) &lt; n) <span class="comment">//a[i]左子结点为a[2*i+1]</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(j &lt; n<span class="number">-1</span> &amp;&amp; a[j] &lt; a[j+<span class="number">1</span>]) <span class="comment">//j为左、右子结点较大值的下标</span></div><div class="line">			j++;</div><div class="line">		<span class="keyword">if</span>(t &lt; a[j]) <span class="comment">//若a[i]小于子结点的值，则交换</span></div><div class="line">		&#123;</div><div class="line">			times ++;</div><div class="line">			a[i] = a[j];</div><div class="line">			i = j;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">	&#125;</div><div class="line">	a[i] = t; <span class="comment">//将t放到正确位置</span></div><div class="line">	<span class="keyword">return</span> times;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">heap_sort</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span> <span class="comment">//堆排序</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i,t;</div><div class="line">	<span class="keyword">int</span> times = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=(n<span class="number">-2</span>)/<span class="number">2</span>;i&gt;=<span class="number">0</span>;i--) <span class="comment">//初始建堆</span></div><div class="line">		times += siftdown(a,i,n); <span class="comment">//堆调整</span></div><div class="line">	<span class="keyword">for</span>(i=n<span class="number">-1</span>;i&gt;<span class="number">0</span>;i--)</div><div class="line">	&#123;</div><div class="line">		times++;</div><div class="line">		t = a[<span class="number">0</span>]; <span class="comment">//对调a[0]与a[i]</span></div><div class="line">		a[<span class="number">0</span>] = a[i];</div><div class="line">		a[i] = t;</div><div class="line">		times += siftdown(a,<span class="number">0</span>,i); <span class="comment">//堆调整</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> times;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">least_num_of_h_height_AVL</span><span class="params">(<span class="keyword">int</span> h)</span> <span class="comment">//计算高度为h的AVL树的最小节点个数</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">if</span>(h == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(h == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">	<span class="keyword">return</span> least_num_of_h_height_AVL(h<span class="number">-1</span>)+least_num_of_h_height_AVL(h<span class="number">-2</span>)+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">AVL_NODE* <span class="title">initial</span><span class="params">()</span><span class="comment">// 树节点初始化</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	AVL_NODE* avl_node;</div><div class="line">	avl_node = <span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(AVL_NODE));</div><div class="line">	avl_node-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line">	avl_node-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	avl_node-&gt;bel = <span class="number">0</span>;</div><div class="line">	<span class="keyword">return</span> avl_node;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">AVL_NODE* <span class="title">BinaryTreeFromOrderings_Pre</span><span class="params">(<span class="keyword">char</span>* preorder, <span class="keyword">char</span>* inorder, <span class="keyword">int</span> length)</span><span class="comment">// 根据前序中序生成子树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> index;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    AVL_NODE *p = initial();</div><div class="line">    p-&gt;data = *preorder;</div><div class="line">    <span class="keyword">for</span>(index=<span class="number">0</span>; index &lt; length; index++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(inorder[index] == *preorder) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    p-&gt;lchild = BinaryTreeFromOrderings_Pre(preorder+<span class="number">1</span>,inorder,index);<span class="comment">//递归调用</span></div><div class="line">    p-&gt;rchild = BinaryTreeFromOrderings_Pre(preorder+index+<span class="number">1</span>,inorder+index+<span class="number">1</span>,length-index<span class="number">-1</span>);<span class="comment">//递归调用</span></div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">AVL_NODE* <span class="title">BinaryTreeFromOrderings_Post</span><span class="params">(<span class="keyword">char</span>* inorder, <span class="keyword">char</span>* postorder, <span class="keyword">int</span> length)</span><span class="comment">// 根据中序后序生成子树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> index;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">    AVL_NODE *p = initial();</div><div class="line">    p-&gt;data = *(postorder+length<span class="number">-1</span>);</div><div class="line">    <span class="keyword">for</span>(index=<span class="number">0</span>; index &lt; length; index++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(inorder[index] == *(postorder+length<span class="number">-1</span>)) <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    p-&gt;lchild = BinaryTreeFromOrderings_Post(inorder,postorder,index);<span class="comment">//递归调用</span></div><div class="line">    p-&gt;rchild = BinaryTreeFromOrderings_Post(inorder+index+<span class="number">1</span>,postorder+index,length-index<span class="number">-1</span>);<span class="comment">//递归调用</span></div><div class="line">    <span class="keyword">return</span> p;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">AVL_NODE* <span class="title">BinaryTreeFromLRtag</span><span class="params">(LRBTree tree[],<span class="keyword">int</span> n)</span><span class="comment">//根据前序加附加两个标志位生成子树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	AVL_NODE *<span class="built_in">stack</span>[MAX],*root,*p,*q;</div><div class="line">	<span class="keyword">int</span> top,i;</div><div class="line">	<span class="keyword">if</span>(n == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</div><div class="line">	root = initial();</div><div class="line">	p = root;</div><div class="line">	top = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n<span class="number">-1</span>; i++)</div><div class="line">	&#123;</div><div class="line">		p-&gt;data = tree[i].data;</div><div class="line">		<span class="keyword">if</span>(tree[i].rtag == <span class="number">0</span>)<span class="comment">//有右节点</span></div><div class="line">			<span class="built_in">stack</span>[top++] = p;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			p-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">		q = initial();</div><div class="line">		<span class="keyword">if</span>(tree[i].ltag == <span class="number">0</span>)<span class="comment">//有左节点</span></div><div class="line">			p-&gt;lchild = q;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			p-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line">			p = <span class="built_in">stack</span>[--top];</div><div class="line">			p-&gt;rchild = q;</div><div class="line">		&#125;</div><div class="line">		p = q;</div><div class="line">	&#125;</div><div class="line">	p-&gt;data = tree[n<span class="number">-1</span>].data;</div><div class="line">	p-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line">	p-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">return</span> root;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">height</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//获取高度</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> max=<span class="number">-1</span>,temp; <span class="comment">//tag用来标记该节点有没有子节点</span></div><div class="line">    <span class="keyword">if</span>(t == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">//为空，高度为-1</span></div><div class="line">    <span class="keyword">if</span>(t-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; t-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    temp = height(t-&gt;lchild);</div><div class="line">    max = temp &gt; max ? temp : max; <span class="comment">//max是子树中的最大高度</span></div><div class="line">    temp = height(t-&gt;rchild);</div><div class="line">    max = temp &gt; max ? temp : max; <span class="comment">//max是子树中的最大高度</span></div><div class="line">    <span class="keyword">return</span> max+<span class="number">1</span>; <span class="comment">//子树的最大高度再加一就是目前的最大高度</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">height_by_leaf</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//仅“跟踪”到叶子结点的一条路径，而不查看树中所有的结点，返回AVL树的高度</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> h = <span class="number">-1</span>;</div><div class="line">	<span class="keyword">while</span>(t != <span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		h++;</div><div class="line">		<span class="keyword">if</span>(t-&gt;bel &gt;= <span class="number">0</span>) t = t-&gt;lchild;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(t-&gt;bel &lt; <span class="number">0</span>) t = t-&gt;rchild;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> h;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">cal_bel</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//计算每个点的平衡度</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	t-&gt;bel = height(t-&gt;rchild) - height(t-&gt;lchild);</div><div class="line">	<span class="keyword">if</span>(t-&gt;lchild != <span class="literal">NULL</span>) cal_bel(t-&gt;lchild);</div><div class="line">	<span class="keyword">if</span>(t-&gt;rchild != <span class="literal">NULL</span>) cal_bel(t-&gt;rchild);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">judge_bel</span><span class="params">(AVL_NODE *t)</span> <span class="comment">//判断这棵树是不是平衡树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">if</span>(t-&gt;bel&gt;<span class="number">1</span> || t-&gt;bel&lt;<span class="number">-1</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span>(t-&gt;lchild != <span class="literal">NULL</span> &amp;&amp; t-&gt;rchild != <span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> judge_bel(t-&gt;lchild) &amp;&amp; judge_bel(t-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(t-&gt;lchild != <span class="literal">NULL</span> &amp;&amp; t-&gt;rchild == <span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> judge_bel(t-&gt;lchild);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(t-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; t-&gt;rchild != <span class="literal">NULL</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> judge_bel(t-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">judge_search</span><span class="params">(AVL_NODE *root)</span> <span class="comment">//判断这棵树是不是查找树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	avl_inorder_print_tostring(root);</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;num<span class="number">-1</span>;i++) <span class="comment">//看中序遍历是不是升序</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(inOrder[i]-inOrder[i+<span class="number">1</span>] &gt; <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setmove</span><span class="params">()</span> <span class="comment">//移动的八个方向的mv数组初始化</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	mv[<span class="number">0</span>].a = <span class="number">-1</span>;  mv[<span class="number">0</span>].b =  <span class="number">0</span>;</div><div class="line">	mv[<span class="number">1</span>].a = <span class="number">-1</span>;  mv[<span class="number">1</span>].b =  <span class="number">1</span>;</div><div class="line">	mv[<span class="number">2</span>].a =  <span class="number">0</span>;  mv[<span class="number">2</span>].b =  <span class="number">1</span>;</div><div class="line">	mv[<span class="number">3</span>].a =  <span class="number">1</span>;  mv[<span class="number">3</span>].b =  <span class="number">1</span>;</div><div class="line">	mv[<span class="number">4</span>].a =  <span class="number">1</span>;  mv[<span class="number">4</span>].b =  <span class="number">0</span>;</div><div class="line">	mv[<span class="number">5</span>].a =  <span class="number">1</span>;  mv[<span class="number">5</span>].b = <span class="number">-1</span>;</div><div class="line">	mv[<span class="number">6</span>].a =  <span class="number">0</span>;  mv[<span class="number">6</span>].b = <span class="number">-1</span>;</div><div class="line">	mv[<span class="number">7</span>].a = <span class="number">-1</span>;  mv[<span class="number">7</span>].b = <span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">inputmaze</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> <span class="comment">// 输入迷宫</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"请输入迷宫:\n"</span>);</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;=m+<span class="number">1</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;=n+<span class="number">1</span>; j++)</div><div class="line">		&#123;</div><div class="line">			maze[i][j] = <span class="number">1</span>; <span class="comment">//初始化迷宫</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i&lt;=m; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">1</span>; j&lt;=n; j++)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;maze[i][j]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">setmark</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> <span class="comment">//防止重复移动的mark数组初始化</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;=m+<span class="number">1</span>; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">for</span>(j=<span class="number">0</span>; j&lt;=n+<span class="number">1</span>; j++)</div><div class="line">		&#123;</div><div class="line">			mark[i][j]=<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getmazepath</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> <span class="comment">//迷宫求解</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	setmove();</div><div class="line">	setmark(m,n);</div><div class="line">	<span class="keyword">int</span> i, j, k, g, h, t;</div><div class="line">	<span class="keyword">if</span>(maze[<span class="number">1</span>][<span class="number">1</span>] != <span class="number">0</span> || maze[m][n] != <span class="number">0</span>) <span class="comment">//如果入口或出口不能通过</span></div><div class="line">		<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//无解，返回1</span></div><div class="line">	s[<span class="number">0</span>].x = <span class="number">1</span>; <span class="comment">//入口结点（1，1）入栈</span></div><div class="line">	s[<span class="number">0</span>].y = <span class="number">1</span>;</div><div class="line">	s[<span class="number">0</span>].d = <span class="number">1</span>;</div><div class="line">	top = <span class="number">1</span>; <span class="comment">//修改栈顶指针</span></div><div class="line">	mark[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">//（1，1）点标记为已到达过</span></div><div class="line">	<span class="keyword">while</span>(top &gt; <span class="number">0</span>) <span class="comment">//当栈不为空</span></div><div class="line">	&#123;</div><div class="line">		i = s[--top].x; <span class="comment">//取栈顶元素</span></div><div class="line">		j = s[top].y;</div><div class="line">		k = s[top].d;</div><div class="line">		<span class="keyword">while</span>(k &lt; <span class="number">7</span>)</div><div class="line">		&#123;</div><div class="line">            g = i+mv[++k].a; <span class="comment">//下一个位置的横坐标</span></div><div class="line">            h = j+mv[k].b; <span class="comment">//下一个位置的纵坐标</span></div><div class="line">			<span class="keyword">if</span>(g == m &amp;&amp; h == n) <span class="comment">//到达出口</span></div><div class="line">			&#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"走出迷宫的方法为：\n"</span>);</div><div class="line">				<span class="keyword">for</span>(t=<span class="number">0</span>; t&lt;top; t++) <span class="comment">//依次打印所通过的路径各顶点</span></div><div class="line">					<span class="built_in">printf</span>(<span class="string">"%3d%3d-&gt;"</span>,s[t].x, s[t].y);</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"%3d%3d-&gt;"</span>,i, j);</div><div class="line">				<span class="built_in">printf</span>(<span class="string">"%3d%3d\n"</span>,m,n);</div><div class="line">				<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//寻找成功，返回0</span></div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (maze[g][h] ==<span class="number">0</span> &amp;&amp; mark[g][h] == <span class="number">0</span>) <span class="comment">//下一位置可通过且未到达过</span></div><div class="line">			&#123;</div><div class="line">				mark[g][h] = <span class="number">1</span>; <span class="comment">//下一位置标记已到达过</span></div><div class="line">				s[top].x = i; <span class="comment">//当前结点入栈</span></div><div class="line">				s[top].y = j;</div><div class="line">				s[top++].d = k;</div><div class="line">				i = g; <span class="comment">//前进到下一位置</span></div><div class="line">				j = h;</div><div class="line">				k = <span class="number">-1</span>; <span class="comment">//k重新初始化</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//找不到路径，返回1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">queens</span><span class="params">(<span class="keyword">int</span> n)</span><span class="comment">//皇后问题</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	Q_NODE <span class="built_in">stack</span>[MAXM*MAXM];</div><div class="line">	<span class="keyword">int</span> top;</div><div class="line">	<span class="keyword">int</span> col[MAXM],md[<span class="number">2</span>*MAXM<span class="number">-1</span>],sd[<span class="number">2</span>*MAXM<span class="number">-1</span>]; <span class="comment">//列，主对角线，副对角线数组</span></div><div class="line">	<span class="keyword">int</span> str, stc, i;</div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i ++)</div><div class="line">		col[i] = <span class="number">0</span>; <span class="comment">//初始化列标记数组</span></div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">2</span>*n<span class="number">-1</span>; i ++)</div><div class="line">	&#123;</div><div class="line">		md[i] = <span class="number">0</span>; <span class="comment">//初始化主对角线标记数组</span></div><div class="line">		sd[i] = <span class="number">0</span>; <span class="comment">//初始化副对角线标记数组</span></div><div class="line">	&#125;</div><div class="line">	top = <span class="number">-1</span>; <span class="comment">//栈顶指针初始化为-1</span></div><div class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; n; i ++) <span class="comment">//第一行结点入栈</span></div><div class="line">	&#123;</div><div class="line">		<span class="built_in">stack</span>[++top].r = <span class="number">0</span>;</div><div class="line">		<span class="built_in">stack</span>[top].c = n<span class="number">-1</span>-i;</div><div class="line">		<span class="built_in">stack</span>[top].tag = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">while</span>(top &gt;= <span class="number">0</span>) <span class="comment">//当栈不为空</span></div><div class="line">	&#123;</div><div class="line">		str = <span class="built_in">stack</span>[top].r; <span class="comment">//行号</span></div><div class="line">		stc = <span class="built_in">stack</span>[top].c; <span class="comment">//列号</span></div><div class="line">		<span class="keyword">if</span>(<span class="built_in">stack</span>[top].tag == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(col[stc] || md[str-stc+n<span class="number">-1</span>] || sd[str+stc]) <span class="comment">//如果当前位置所在列或主对角线或副对角线上已经有皇后</span></div><div class="line">				top--; <span class="comment">//结点出栈</span></div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">			    col[stc] = <span class="number">1</span>; <span class="comment">//标记到列数组中</span></div><div class="line">				md[str-stc+n<span class="number">-1</span>] = <span class="number">1</span>; <span class="comment">//标记到主对角线数组中</span></div><div class="line">				sd[str+stc] = <span class="number">1</span>; <span class="comment">//标记到副对角线数组中</span></div><div class="line">				<span class="built_in">stack</span>[top].tag = <span class="number">1</span>; <span class="comment">//该位置可能成为布局中的一个位置，tag域置1</span></div><div class="line">				<span class="keyword">if</span>(str == n<span class="number">-1</span>) <span class="comment">//该位置已是最后一行</span></div><div class="line">				&#123;</div><div class="line">					<span class="built_in">printf</span>(<span class="string">"可以这样放:\n"</span>);</div><div class="line">					<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;=top ;i++)</div><div class="line">					&#123;</div><div class="line">						<span class="keyword">if</span>(<span class="built_in">stack</span>[i].tag) <span class="comment">//如果结点i的tag域为1</span></div><div class="line">						&#123;</div><div class="line">							<span class="built_in">printf</span>(<span class="string">"%4d%3d\n"</span>,<span class="built_in">stack</span>[i].r,<span class="built_in">stack</span>[i].c); <span class="comment">//打印位置</span></div><div class="line">						&#125;</div><div class="line">					&#125;</div><div class="line">					<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">					<span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//成功返回0</span></div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;n; i++) <span class="comment">//将下一行结点入栈</span></div><div class="line">					&#123;</div><div class="line">						<span class="built_in">stack</span>[++top].r = str+<span class="number">1</span>;</div><div class="line">						<span class="built_in">stack</span>[top].c = n<span class="number">-1</span>-i;</div><div class="line">						<span class="built_in">stack</span>[top].tag = <span class="number">0</span>;</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span></div><div class="line">		&#123;</div><div class="line">			col[stc] = <span class="number">0</span>; <span class="comment">//如果当前位置tag域为1，列标记数组置0</span></div><div class="line">			md[str-stc+n<span class="number">-1</span>] = <span class="number">0</span>; <span class="comment">//主对角线标记数组置0</span></div><div class="line">			sd[str+stc] = <span class="number">0</span>; <span class="comment">//副对角线标记数组置0</span></div><div class="line">			top--; <span class="comment">//结点出栈</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//不成功返回1</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function">HUFFMAN_NODE *<span class="title">create_huffman_tree</span><span class="params">(<span class="keyword">char</span> a[], <span class="keyword">double</span> w[], <span class="keyword">int</span> n)</span> <span class="comment">//建立哈夫曼树</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	HUFFMAN_NODE *addr[<span class="number">2</span>*MAXM<span class="number">-1</span>];</div><div class="line">	<span class="keyword">int</span> n1, n2, i, j;</div><div class="line">	<span class="keyword">double</span> u, v, min1, min2;</div><div class="line">	<span class="keyword">int</span> minnum1, minnum2, minmindata1, minmindata2;</div><div class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; n; i++) <span class="comment">//初始化所有结点</span></div><div class="line">	&#123;</div><div class="line">		addr[i] = (HUFFMAN_NODE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HUFFMAN_NODE));</div><div class="line">		addr[i]-&gt;data = a[i];</div><div class="line">		addr[i]-&gt;lchild = <span class="literal">NULL</span>;</div><div class="line">		addr[i]-&gt;rchild = <span class="literal">NULL</span>;</div><div class="line">		addr[i]-&gt;num = <span class="number">1</span>;</div><div class="line">		addr[i]-&gt;mindata = i;</div><div class="line">		w[i] = -w[i]; <span class="comment">//可供选择的结点权值设为负</span></div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(i = n; i &lt; <span class="number">2</span>*n<span class="number">-1</span>; i++)</div><div class="line">	&#123;</div><div class="line">		n1 = <span class="number">-1</span>; min1 = <span class="number">9999</span>; minnum1 = <span class="number">9999</span>; minmindata1 = <span class="number">9999</span>;</div><div class="line">		n2 = <span class="number">-1</span>; min2 = <span class="number">9999</span>; minnum2 = <span class="number">9999</span>; minmindata2 = <span class="number">9999</span>;</div><div class="line">		<span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; i; j ++)</div><div class="line">		&#123;</div><div class="line">			v = w[j];</div><div class="line">			u = -v;</div><div class="line">			<span class="keyword">if</span>(u &gt; <span class="number">0</span>) <span class="comment">//结点j为可供选择结点</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span>( u&lt;min1 || (<span class="built_in">fabs</span>(u-min1)&lt;<span class="number">1e-6</span> &amp;&amp; addr[j]-&gt;num&lt;minnum1) || (<span class="built_in">fabs</span>(u-min1)&lt;<span class="number">1e-6</span> &amp;&amp; addr[j]-&gt;num==minnum1 &amp;&amp; addr[j]-&gt;mindata&lt;minmindata1) )</div><div class="line">				&#123;</div><div class="line">					<span class="comment">//标记当前权值最小结点</span></div><div class="line">					min2 = min1; n2 = n1; minnum2 = minnum1; minmindata2 = minmindata1;</div><div class="line">					min1 = u; n1 = j; minnum1 = addr[j]-&gt;num; minmindata1 = addr[j]-&gt;mindata;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">else</span> <span class="keyword">if</span>( u&lt;min2 || (<span class="built_in">fabs</span>(u-min2)&lt;<span class="number">1e-6</span> &amp;&amp; addr[j]-&gt;num&lt;minnum2) || (<span class="built_in">fabs</span>(u-min2)&lt;<span class="number">1e-6</span> &amp;&amp; addr[j]-&gt;num==minnum2 &amp;&amp; addr[j]-&gt;mindata&lt;minmindata2) )</div><div class="line">				&#123;</div><div class="line">					<span class="comment">//标记当前权值第二小结点</span></div><div class="line">					min2 = u; n2 = j; minnum2 = addr[j]-&gt;num; minmindata2 = addr[j]-&gt;mindata;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		addr[i] = (HUFFMAN_NODE*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HUFFMAN_NODE));</div><div class="line">		addr[i]-&gt;data = <span class="string">'*'</span>; <span class="comment">//合并两棵权值最小的子树</span></div><div class="line">		addr[i]-&gt;lchild = addr[n1];</div><div class="line">		addr[i]-&gt;rchild = addr[n2];</div><div class="line">		addr[i]-&gt;num = addr[n1]-&gt;num+addr[n2]-&gt;num+<span class="number">1</span>;</div><div class="line">		addr[i]-&gt;mindata = addr[n1]-&gt;mindata&lt;addr[n2]-&gt;mindata ? addr[n1]-&gt;mindata : addr[n2]-&gt;mindata;</div><div class="line">		w[i] = w[n1]+w[n2]; <span class="comment">//计算根结点权值（为负）</span></div><div class="line">		w[n1] = -w[n1]; <span class="comment">//子结点权值恢复正值</span></div><div class="line">		w[n2] = -w[n2];</div><div class="line">	&#125;</div><div class="line">	w[<span class="number">2</span>*n<span class="number">-2</span>] = -w[<span class="number">2</span>*n<span class="number">-2</span>]; <span class="comment">//修改根结点权值</span></div><div class="line">	<span class="keyword">return</span> (addr[<span class="number">2</span>*n<span class="number">-2</span>]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">decode</span><span class="params">(HUFFMAN_NODE *root, <span class="keyword">char</span> s[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	HUFFMAN_NODE *p;</div><div class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(s[i] != <span class="string">'\0'</span>)</div><div class="line">	&#123;</div><div class="line">		p = root;</div><div class="line">		<span class="keyword">while</span>(p-&gt;lchild != <span class="literal">NULL</span> || p-&gt;rchild != <span class="literal">NULL</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(s[i] == <span class="string">'0'</span>)</div><div class="line">				p = p-&gt;lchild;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				p = p-&gt;rchild;</div><div class="line">			i++;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c"</span>,p-&gt;data);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="comment">//二叉查找树的操作</span></div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">	int n,i,sum=0;</span></div><div class="line"><span class="comment">	char ch[MAX];</span></div><div class="line"><span class="comment">	NODE *root = NULL, *p = NULL, *q = NULL;</span></div><div class="line"><span class="comment">	printf("请输入这棵二叉树共有多少个节点：\n");</span></div><div class="line"><span class="comment">	scanf("%d",&amp;n);</span></div><div class="line"><span class="comment">	getchar();</span></div><div class="line"><span class="comment">	printf("请依次输入%d个键值:\n",n);</span></div><div class="line"><span class="comment">	for(i=0;i&lt;n;i++) //依次插入</span></div><div class="line"><span class="comment">	&#123;</span></div><div class="line"><span class="comment">		scanf("%c",&amp;ch[i]);</span></div><div class="line"><span class="comment">		getchar();</span></div><div class="line"><span class="comment">		insert(&amp;root,ch[i]);</span></div><div class="line"><span class="comment">	&#125;</span></div><div class="line"><span class="comment">	printf("中序输出为：\n");</span></div><div class="line"><span class="comment">	inorder_print(root);</span></div><div class="line"><span class="comment">	printf("\n");</span></div><div class="line"><span class="comment">	for(i=0;i&lt;n;i++) //计算查找结点的平均比较次数</span></div><div class="line"><span class="comment">	&#123;</span></div><div class="line"><span class="comment">		p = NULL;</span></div><div class="line"><span class="comment">		q = NULL;</span></div><div class="line"><span class="comment">		sum += search(root,ch[i],&amp;p,&amp;q);</span></div><div class="line"><span class="comment">	&#125;</span></div><div class="line"><span class="comment">	printf("查找结点的平均比较次数为：\n");</span></div><div class="line"><span class="comment">	printf("%.3lf\n",sum*1.0/n);</span></div><div class="line"><span class="comment">	*/</span></div><div class="line"></div><div class="line">	<span class="comment">//堆排序的操作</span></div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">	int n,i,times;</span></div><div class="line"><span class="comment">	int a[MAX];</span></div><div class="line"><span class="comment">	printf("请输入共有多少个数需要排序：\n");</span></div><div class="line"><span class="comment">	scanf("%d",&amp;n);</span></div><div class="line"><span class="comment">	printf("请依次输入%d个键值:\n",n);</span></div><div class="line"><span class="comment">	for(i=0;i&lt;n;i++)</span></div><div class="line"><span class="comment">		scanf("%d",&amp;a[i]);</span></div><div class="line"><span class="comment">	times = heap_sort(a,n); //堆排序</span></div><div class="line"><span class="comment">	printf("排序后的结果为：\n");</span></div><div class="line"><span class="comment">	for(i=0;i&lt;n;i++)</span></div><div class="line"><span class="comment">		printf("%d ",a[i]);</span></div><div class="line"><span class="comment">	printf("\n");</span></div><div class="line"><span class="comment">	printf("共交换了%d次\n",times);</span></div><div class="line"><span class="comment">	*/</span></div><div class="line"></div><div class="line">	<span class="comment">//平衡查找树的操作</span></div><div class="line">	<span class="comment">//AVL_NODE *root;</span></div><div class="line">	<span class="comment">//三种顺序输入法</span></div><div class="line">	<span class="comment">//1.前序加附加两个标志位</span></div><div class="line">	<span class="comment">// int n,i; //节点个数</span></div><div class="line">	<span class="comment">// LRBTree lrbarray[MAX];</span></div><div class="line">	<span class="comment">// printf("请输入这棵树共有多少个节点：\n");</span></div><div class="line">	<span class="comment">// scanf("%d",&amp;n);</span></div><div class="line">	<span class="comment">// printf("请依次输入%d个左标签的值，键值，右标签的值：\n",n);</span></div><div class="line">	<span class="comment">// for(i=0;i&lt;n;i++)</span></div><div class="line">	<span class="comment">// &#123;</span></div><div class="line">	<span class="comment">// 	scanf("%d %c %d",&amp;lrbarray[i].ltag,&amp;lrbarray[i].data,&amp;lrbarray[i].rtag);</span></div><div class="line">	<span class="comment">// &#125;</span></div><div class="line">	<span class="comment">// root = BinaryTreeFromLRtag(lrbarray,n);</span></div><div class="line">	<span class="comment">//2.前序加中序</span></div><div class="line">	<span class="comment">// printf("请输入前序和中序：\n");</span></div><div class="line">	<span class="comment">// scanf("%s%s",preOrder,inOrder);</span></div><div class="line">	<span class="comment">// root = BinaryTreeFromOrderings_Pre(preOrder,inOrder,strlen(preOrder));</span></div><div class="line">	<span class="comment">//3.中序加后序</span></div><div class="line">	<span class="comment">// printf("请输入中序和后序：\n");</span></div><div class="line">	<span class="comment">// scanf("%s%s",inOrder,postOrder);</span></div><div class="line">	<span class="comment">// root = BinaryTreeFromOrderings_Post(inOrder,postOrder,strlen(inOrder));</span></div><div class="line"></div><div class="line">	<span class="comment">// printf("是否为平衡查找树:");</span></div><div class="line">	<span class="comment">// cal_bel(root);//计算每个节点的平衡度</span></div><div class="line">	<span class="comment">// if(judge_bel(root) &amp;&amp; judge_search(root)) printf("是\n"); //既是平衡树又是查找树</span></div><div class="line">	<span class="comment">// else printf("否\n");</span></div><div class="line">	<span class="comment">// printf("这棵平衡查找树的高度为：%d\n",height_by_leaf(root));</span></div><div class="line">	<span class="comment">// printf("请输入想要查询的AVL树的最小节点个数的高度：\n");</span></div><div class="line">	<span class="comment">// int h;</span></div><div class="line">	<span class="comment">// scanf("%d",&amp;h);</span></div><div class="line">	<span class="comment">// printf("高度为%d的AVL树的最小节点个数为:%d\n",h,least_num_of_h_height_AVL(h));</span></div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">//Huffman树的操作</span></div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">	int n,i;</span></div><div class="line"><span class="comment">	char a[MAXM];</span></div><div class="line"><span class="comment">	double w[2*MAXM-1];</span></div><div class="line"><span class="comment">	HUFFMAN_NODE *root;</span></div><div class="line"><span class="comment">	printf("请输入要用多少字符构造huffman树：\n");</span></div><div class="line"><span class="comment">	scanf("%d",&amp;n);</span></div><div class="line"><span class="comment">	getchar();</span></div><div class="line"><span class="comment">	printf("请输入%d个字符和对应的权值：\n",n);</span></div><div class="line"><span class="comment">	for(i=0;i&lt;n;i++)</span></div><div class="line"><span class="comment">	&#123;</span></div><div class="line"><span class="comment">		scanf("%c%lf",&amp;a[i],&amp;w[i]);</span></div><div class="line"><span class="comment">		getchar();</span></div><div class="line"><span class="comment">	&#125;</span></div><div class="line"><span class="comment">	root = create_huffman_tree(a,w,n);</span></div><div class="line"><span class="comment">	printf("Huffman树创建完成\n");</span></div><div class="line"><span class="comment">	//解码</span></div><div class="line"><span class="comment">	printf("请输入想要解码的01字符串：");//001101001110010101011110110</span></div><div class="line"><span class="comment">	char s[MAXM];</span></div><div class="line"><span class="comment">	scanf("%s",s);</span></div><div class="line"><span class="comment">	printf("解码结果为：\n");</span></div><div class="line"><span class="comment">	decode(root,s);</span></div><div class="line"><span class="comment">	*/</span></div><div class="line"></div><div class="line">	<span class="comment">//皇后问题</span></div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">	int n;</span></div><div class="line"><span class="comment">	printf("请输入皇后的数量：\n");</span></div><div class="line"><span class="comment">	scanf("%d",&amp;n);</span></div><div class="line"><span class="comment">	if(queens(n)) printf("无解\n");</span></div><div class="line"><span class="comment">	*/</span></div><div class="line"></div><div class="line">	<span class="comment">//迷宫求解问题</span></div><div class="line">	<span class="comment">/*</span></div><div class="line"><span class="comment">	int m,n;</span></div><div class="line"><span class="comment">	printf("请输入迷宫的终点位置：\n");</span></div><div class="line"><span class="comment">	scanf("%d%d",&amp;m,&amp;n);</span></div><div class="line"><span class="comment">	inputmaze(m,n);</span></div><div class="line"><span class="comment">	if(getmazepath(m,n)) printf("无解\n");</span></div><div class="line"><span class="comment">	*/</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>donate the author</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="陆轩韬 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="陆轩韬 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+          
+            <a href="/tags/c/" rel="tag"><i class="fa fa-tag"></i> c</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/08/二叉树多功能实现/" rel="next" title="二叉树多功能实现">
+                <i class="fa fa-chevron-left"></i> 二叉树多功能实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/图的应用/" rel="prev" title="图的应用">
+                图的应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微薄</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="陆轩韬" />
+          <p class="site-author-name" itemprop="name">陆轩韬</p>
+           
+              <p class="site-description motion-element" itemprop="description">一只等待进化为程序猿的猴子</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luxuantao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+		
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://jxtxzzw.com/" title="jxtxzzw空间 @ 张臻炜" target="_blank">jxtxzzw空间 @ 张臻炜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.ecnu.edu.cn/" title="EOJ @ ECNU" target="_blank">EOJ @ ECNU</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陆轩韬</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共23.0k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("56AdvCz2CdFFai1IYTnP9VvW-gzGzoHsz", "lUYIn1nVPECkvjqjN7cLvimt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
