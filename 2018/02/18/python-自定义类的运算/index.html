@@ -118,17 +118,17 @@
 
 
 
-<meta name="description" content="自定义定义一个复数类，实现四则运算。">
+<meta name="description" content="自定义一个复数类，实现四则运算。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python-自定义类的运算">
 <meta property="og:url" content="https://luxuantao.github.io/2018/02/18/python-自定义类的运算/index.html">
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
-<meta property="og:description" content="自定义定义一个复数类，实现四则运算。">
+<meta property="og:description" content="自定义一个复数类，实现四则运算。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-18T07:39:50.786Z">
+<meta property="og:updated_time" content="2018-02-18T07:41:13.330Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python-自定义类的运算">
-<meta name="twitter:description" content="自定义定义一个复数类，实现四则运算。">
+<meta name="twitter:description" content="自定义一个复数类，实现四则运算。">
 
 
 
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  253 字
+                  251 字
                 </span>
               
 
@@ -426,7 +426,7 @@
 
       
         <hr>
-<p>自定义定义一个复数类，实现四则运算。</p>
+<p>自定义一个复数类，实现四则运算。</p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Complex</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, real, imaginary)</span>:</span></div><div class="line">        self.real = real</div><div class="line">        self.imaginary = imaginary</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(self, no)</span>:</span></div><div class="line">        real = self.real + no.real</div><div class="line">        imaginary = self.imaginary + no.imaginary</div><div class="line">        <span class="keyword">return</span> Complex(real, imaginary)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__sub__</span><span class="params">(self, no)</span>:</span></div><div class="line">        real = self.real - no.real</div><div class="line">        imaginary = self.imaginary - no.imaginary</div><div class="line">        <span class="keyword">return</span> Complex(real, imaginary)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__mul__</span><span class="params">(self, no)</span>:</span></div><div class="line">        real = self.real * no.real - self.imaginary * no.imaginary</div><div class="line">        imaginary = self.real * no.imaginary + self.imaginary * no.real</div><div class="line">        <span class="keyword">return</span> Complex(real, imaginary)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__truediv__</span><span class="params">(self, no)</span>:</span></div><div class="line">        x = float(no.real ** <span class="number">2</span> + no.imaginary ** <span class="number">2</span>)</div><div class="line">        y = self * Complex(no.real, -no.imaginary)</div><div class="line">        real = y.real / x</div><div class="line">        imaginary = y.imaginary / x</div><div class="line">        <span class="keyword">return</span> Complex(real, imaginary)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mod</span><span class="params">(self)</span>:</span></div><div class="line">        real = math.sqrt(self.real ** <span class="number">2</span> + self.imaginary ** <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> Complex(real, <span class="number">0</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> self.imaginary == <span class="number">0</span>:</div><div class="line">            result = <span class="string">"%.2f+0.00i"</span> % (self.real)</div><div class="line">        <span class="keyword">elif</span> self.real == <span class="number">0</span>:</div><div class="line">            <span class="keyword">if</span> self.imaginary &gt;= <span class="number">0</span>:</div><div class="line">                result = <span class="string">"0.00+%.2fi"</span> % (self.imaginary)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                result = <span class="string">"0.00-%.2fi"</span> % (abs(self.imaginary))</div><div class="line">        <span class="keyword">elif</span> self.imaginary &gt; <span class="number">0</span>:</div><div class="line">            result = <span class="string">"%.2f+%.2fi"</span> % (self.real, self.imaginary)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            result = <span class="string">"%.2f-%.2fi"</span> % (self.real, abs(self.imaginary))</div><div class="line">        <span class="keyword">return</span> result</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    c = map(float, input().split())</div><div class="line">    d = map(float, input().split())</div><div class="line">    x = Complex(*c)</div><div class="line">    y = Complex(*d)</div><div class="line">    print(*map(str, [x+y, x-y, x*y, x/y, x.mod(), y.mod()]), sep=<span class="string">'\n'</span>)</div></pre></td></tr></table></figure>
 <p>有个巨坑的地方：python3定义一般的除法要用<code>__truediv__</code> 而不是<code>__div__</code></p>
