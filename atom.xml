@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luxuantao.github.io/"/>
-  <updated>2018-03-31T06:40:05.760Z</updated>
+  <updated>2018-03-31T11:43:43.408Z</updated>
   <id>https://luxuantao.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>新增个人主页</title>
+    <link href="https://luxuantao.github.io/2018/03/31/%E6%96%B0%E5%A2%9E%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/"/>
+    <id>https://luxuantao.github.io/2018/03/31/新增个人主页/</id>
+    <published>2018-03-31T11:38:52.000Z</published>
+    <updated>2018-03-31T11:43:43.408Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>Web作业：制作个人主页。</p><a id="more"></a><p>好像没多久就要交Web作业了，花了一个下午手糊了一个，已加入友链，内容有些许少儿不宜。。。而且第一次加载很慢。你可别怪我，要怪就怪github，免费的东西就将就着用呗。如果你想看，就耐心一点。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;Web作业：制作个人主页。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://luxuantao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>图标、菜单、加速键、消息框</title>
@@ -443,29 +464,6 @@
     
       <category term="Arduino" scheme="https://luxuantao.github.io/categories/Arduino/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>第一道交互题</title>
-    <link href="https://luxuantao.github.io/2017/09/15/%E7%AC%AC%E4%B8%80%E9%81%93%E4%BA%A4%E4%BA%92%E9%A2%98/"/>
-    <id>https://luxuantao.github.io/2017/09/15/第一道交互题/</id>
-    <published>2017-09-15T10:05:22.000Z</published>
-    <updated>2018-01-25T09:01:35.732Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>EOJ被我刷屏了。。。满屏的<code>Idleness Limit Exceeded</code>。。。直到ZZW给了答案才知道怎么写。</p><a id="more"></a><p>原题链接：<a href="http://acm.ecnu.edu.cn/problem/3342/" target="_blank" rel="external">经典的猜数游戏</a></p><p>代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="keyword">int</span> low=<span class="number">-1e9</span>;</div><div class="line"><span class="keyword">int</span> up=<span class="number">1e9</span>;</div><div class="line"><span class="keyword">while</span>(<span class="number">1</span>)</div><div class="line">&#123;</div><div class="line"><span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;mid&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">//printf("%d\n",mid);</span></div><div class="line"><span class="comment">//fflush(stdout);</span></div><div class="line"><span class="built_in">string</span> s;</div><div class="line"><span class="built_in">cin</span>&gt;&gt;s;</div><div class="line"><span class="keyword">if</span>(s==<span class="string">"equal"</span>) <span class="keyword">break</span>;</div><div class="line"><span class="keyword">if</span>(s==<span class="string">"small"</span>) low=mid+<span class="number">1</span>;</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">"big"</span>) up=mid<span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>题目很简单，关键是你怎么清空缓存。</p><p>两种方法：</p><p>1.<code>cout&lt;&lt;endl</code>直接清空缓存。</p><p>2.如果你用了<code>printf</code>，那么后面就要加<code>fflush(stdout);</code>。</p><p>另附java代码:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</div><div class="line"><span class="keyword">int</span> low=-<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">int</span> up=<span class="number">1000000000</span>;</div><div class="line">String s;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line"><span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line">System.out.println(mid);</div><div class="line">System.out.flush();</div><div class="line">s=in.nextLine();</div><div class="line"><span class="keyword">switch</span>(s) &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"big"</span>:</div><div class="line">up=mid-<span class="number">1</span>;</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> <span class="string">"small"</span>:</div><div class="line">low=mid+<span class="number">1</span>;</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> <span class="string">"equal"</span>:</div><div class="line"><span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">while</span>(!s.equals(<span class="string">"equal"</span>));</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>注意用法:<code>System.out.flush();</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;EOJ被我刷屏了。。。满屏的&lt;code&gt;Idleness Limit Exceeded&lt;/code&gt;。。。直到ZZW给了答案才知道怎么写。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="c++" scheme="https://luxuantao.github.io/categories/c/"/>
-    
-    
-      <category term="OJ" scheme="https://luxuantao.github.io/tags/OJ/"/>
     
   </entry>
   
