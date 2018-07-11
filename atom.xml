@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luxuantao.github.io/"/>
-  <updated>2018-07-09T05:27:23.623Z</updated>
+  <updated>2018-07-11T09:29:16.994Z</updated>
   <id>https://luxuantao.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://luxuantao.github.io/2018/07/09/ubuntu%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%B8%85%E7%90%86/"/>
     <id>https://luxuantao.github.io/2018/07/09/ubuntu磁盘空间清理/</id>
     <published>2018-07-09T05:20:33.000Z</published>
-    <updated>2018-07-09T05:27:23.623Z</updated>
+    <updated>2018-07-11T09:29:16.994Z</updated>
     
-    <content type="html"><![CDATA[<hr><p>刚开始接触ubuntu的时候，装好系统没多久根目录就满了，而且就像是中了蠕虫病毒一样，就算你什么都没干，它也会不断地侵蚀你的硬盘空间，在重装了三次系统后，发现了问题所在。</p><a id="more"></a><p>来到<code>/var/log</code>目录下，这里存放了ubuntu的日志文件，其中<code>syslog</code> 和 <code>kern.log</code>这两个文件很大，事实上它们基本上每时每刻都在增长，可使用如下命令清理： </p><p><code>sudo -i</code> 改变权限，然后输入密码，执行：<br><code>echo &gt; /var/log/syslog</code>和<code>echo &gt; /var/log/kern.log</code>发现一下子就能释放不少空间。</p><p>至于删除日志文件会不会有什么影响，目前亲测还没有遇到问题，应该将来也不会有问题，但是鉴于日志文件终究是有其存在的价值的，所以不到万不得已，建议不要删除，以免误操作。</p><p>一般来说，以下几条命令更为常用：</p><p><code>sudo apt-get autoclean</code>清理旧版本的软件缓存</p><p><code>sudo apt-get clean</code>清理所有软件缓存</p><p><code>sudo apt-get autoremove</code>删除系统不再使用的孤立软件</p>]]></content>
+    <content type="html"><![CDATA[<hr><p>刚开始接触ubuntu的时候，装好系统没多久根目录就满了，而且就像是中了蠕虫病毒一样，就算你什么都没干，它也会不断地侵蚀你的硬盘空间，在重装了三次系统后，发现了问题所在。</p><a id="more"></a><p>来到<code>/var/log</code>目录下，这里存放了ubuntu的日志文件，其中<code>syslog</code> 和 <code>kern.log</code>这两个文件很大，事实上它们基本上每时每刻都在增长，可使用如下命令清理： </p><p><code>sudo -i</code> 改变权限，然后输入密码，执行： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rm -rf /var/log/*.gz</div><div class="line">rm -rf /var/log/*.1</div><div class="line">echo &quot;&quot; &gt; /var/log/dmesg</div><div class="line">echo &quot;&quot; &gt; /var/log/kern.log</div><div class="line">echo &quot;&quot; &gt; /var/log/messages</div><div class="line">echo &quot;&quot; &gt; /var/log/syslog</div></pre></td></tr></table></figure><p>发现一下子就能释放不少空间。</p><p>至于删除日志文件会不会有什么影响，目前亲测还没有遇到问题，应该将来也不会有问题，但是鉴于日志文件终究是有其存在的价值的，所以不到万不得已，建议不要删除，以免误操作。</p><p>一般来说，以下几条命令更为常用：</p><p><code>sudo apt-get autoclean</code>清理旧版本的软件缓存</p><p><code>sudo apt-get clean</code>清理所有软件缓存</p><p><code>sudo apt-get autoremove</code>删除系统不再使用的孤立软件</p>]]></content>
     
     <summary type="html">
     
