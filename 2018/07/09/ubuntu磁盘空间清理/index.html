@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
 <meta property="og:description" content="刚开始接触ubuntu的时候，装好系统没多久根目录就满了，而且就像是中了蠕虫病毒一样，就算你什么都没干，它也会不断地侵蚀你的硬盘空间，在重装了三次系统后，发现了问题所在。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T09:29:16.994Z">
+<meta property="og:updated_time" content="2018-07-29T00:57:40.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu磁盘空间清理">
 <meta name="twitter:description" content="刚开始接触ubuntu的时候，装好系统没多久根目录就满了，而且就像是中了蠕虫病毒一样，就算你什么都没干，它也会不断地侵蚀你的硬盘空间，在重装了三次系统后，发现了问题所在。">
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  311 字
+                  624 字
                 </span>
               
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  2 分钟
                 </span>
               
             </div>
@@ -429,7 +429,7 @@
         <hr>
 <p>刚开始接触ubuntu的时候，装好系统没多久根目录就满了，而且就像是中了蠕虫病毒一样，就算你什么都没干，它也会不断地侵蚀你的硬盘空间，在重装了三次系统后，发现了问题所在。</p>
 <a id="more"></a>
-<p>来到<code>/var/log</code>目录下，这里存放了ubuntu的日志文件，其中<code>syslog</code> 和 <code>kern.log</code>这两个文件很大，事实上它们基本上每时每刻都在增长，可使用如下命令清理： </p>
+<h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p>来到<code>/var/log</code>目录下，这里存放了ubuntu的日志文件，其中<code>syslog</code> 和 <code>kern.log</code>这两个文件很大，事实上它们基本上每时每刻都在增长，可使用如下命令清理： </p>
 <p><code>sudo -i</code> 改变权限，然后输入密码，执行： </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">rm -rf /var/log/*.gz</div><div class="line">rm -rf /var/log/*.1</div><div class="line">echo &quot;&quot; &gt; /var/log/dmesg</div><div class="line">echo &quot;&quot; &gt; /var/log/kern.log</div><div class="line">echo &quot;&quot; &gt; /var/log/messages</div><div class="line">echo &quot;&quot; &gt; /var/log/syslog</div></pre></td></tr></table></figure>
 <p>发现一下子就能释放不少空间。</p>
@@ -438,6 +438,18 @@
 <p><code>sudo apt-get autoclean</code>清理旧版本的软件缓存</p>
 <p><code>sudo apt-get clean</code>清理所有软件缓存</p>
 <p><code>sudo apt-get autoremove</code>删除系统不再使用的孤立软件</p>
+<h2 id="方案二"><a href="#方案二" class="headerlink" title="方案二"></a>方案二</h2><p>更进一步，我发现即使删除了日志文件后，过一阵子它还是会不断增长，如果你不嫌麻烦，那你可以自己隔一阵子就手动删一次，当然也可以写一个批处理程序自动隔一阵子删除，但终究治标不治本，而且反复地擦写对硬盘（尤其是固态硬盘）的损伤也大。想到日志文件之所以会不断地快速增长，肯定是系统出了什么问题，导致日志文件时刻都在记录错误，所以我们可以打开日志文件进行查看。</p>
+<p>对我的电脑而言，其实是出现了<code>pcie</code>错误，日志文件中大部分的都是同样的东西，诸如<code>PCIe Bus Error</code>等。</p>
+<p>解决方法如下：</p>
+<p>打开终端，修改<code>/etc/default/grub</code>引导文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cp /etc/default/grub /etc/default/grub.bak</div><div class="line">sudo -H gedit /etc/default/grub</div></pre></td></tr></table></figure>
+<p>打开之后找到以下这句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;</div></pre></td></tr></table></figure>
+<p>然后将其改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash pci=nomsi&quot;</div></pre></td></tr></table></figure>
+<p>保存关闭grub文件，更新grub引导，并重启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo update-grub</div><div class="line">sudo reboot</div></pre></td></tr></table></figure>
+<p>问题解决了，日志文件也恢复正常，不会再大量地记录这方面的错误。</p>
 
       
     </div>
@@ -507,6 +519,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/07/29/俄罗斯方块/" rel="prev" title="俄罗斯方块">
+                俄罗斯方块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -559,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -575,7 +600,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -666,6 +691,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方案一"><span class="nav-number">1.</span> <span class="nav-text">方案一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方案二"><span class="nav-number">2.</span> <span class="nav-text">方案二</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -714,7 +755,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共30.0k字</span>
+  <span class="post-count">博客全站共32.5k字</span>
 </div>
         
 
