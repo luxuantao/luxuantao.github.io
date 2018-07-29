@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #FFFFCC; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="人工智能,神经网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Welcome to Luson's home" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="人工智能的最后一次作业，搭建BP神经网络实现手写体数字识别。">
+<meta name="keywords" content="人工智能,神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手动搭建BP神经网络">
+<meta property="og:url" content="https://luxuantao.github.io/2018/07/29/手动搭建BP神经网络/index.html">
+<meta property="og:site_name" content="Welcome to Luson&#39;s home">
+<meta property="og:description" content="人工智能的最后一次作业，搭建BP神经网络实现手写体数字识别。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-29T01:23:16.857Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手动搭建BP神经网络">
+<meta name="twitter:description" content="人工智能的最后一次作业，搭建BP神经网络实现手写体数字识别。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luxuantao.github.io/2018/07/29/手动搭建BP神经网络/"/>
+
+
+
+
+
+  <title>手动搭建BP神经网络 | Welcome to Luson's home</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+	 <a href="https://github.com/luxuantao">
+	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+	 </a>
+	 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to Luson's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就怕你宁愿流泪望天却不昂首向前</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2018/07/29/手动搭建BP神经网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陆轩韬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Luson's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手动搭建BP神经网络</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-29T09:02:32+08:00">
+                2018-07-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/07/29/手动搭建BP神经网络/" class="leancloud_visitors" data-flag-title="手动搭建BP神经网络">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃&nbsp; | &nbsp;</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  2,008 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  9 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<p>人工智能的最后一次作业，搭建BP神经网络实现手写体数字识别。</p>
+<a id="more"></a>
+<h2 id="数据集介绍"><a href="#数据集介绍" class="headerlink" title="数据集介绍"></a>数据集介绍</h2><p>数据集采用著名的MNIST数据集，来自美国国家标准与技术研究所，由来自250个不同人手写的数字构成，其中50%是高中学生，50%来自人口普查局的工作人员。测试集也是同样比例的手写数字数据。</p>
+<p>它包含了四个部分：前两个文件为训练集，后两个文件为测试集。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">-数字样本</th>
+<th style="text-align:center">-数字标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Training set images:train-images-idx3-ubyte.gz (包含60,000个样本)</td>
+<td style="text-align:center">Training set labels:train-labels-idx1-ubyte.gz (包含60,000个标签)</td>
+</tr>
+<tr>
+<td style="text-align:center">Test set images: t10k-images-idx3-ubyte.gz (包含10,000个样本)</td>
+<td style="text-align:center">Test set labels: t10k-labels-idx1-ubyte.gz (包含10,000个标签)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><p>BP神经网络是一种按误差逆传播算法训练的多层前馈网络，能学习和存贮大量的输入-输出模式映射关系，而无需事前揭示描述这种映射关系的数学方程。它的学习规则是使用梯度下降法，通过反向传播来不断调整网络的权值和阈值，使网络的误差最小，其结构包括输入层、隐藏层和输出层。 </p>
+<p>本实验中，对于每一张手写图片，我先把它处理成一个28 * 28 的01矩阵，其中1代表数字的笔画着色部分，0则代表空白。然后我们把该矩阵，扁平成一个784维的输入向量，输入到输入层。经过隐藏层到达输出层时，是一个10维的输出向量，每一位分别对应是数字0~9的可能性。通过比较输出层的实际输出与期望输出，进行反向反馈调节，并循环重复上述步骤直到达到指定迭代次数。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码并不是很长，我用c++进行实现。</p>
+<h3 id="BP-h文件"><a href="#BP-h文件" class="headerlink" title="BP.h文件"></a>BP.h文件</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> BP_H_INCLUDED</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BP_H_INCLUDED</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> INPUT_LAYER = <span class="number">784</span>; <span class="comment">//输入层维度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> HIDDEN_LAYER = <span class="number">40</span>; <span class="comment">//隐含层维度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> OUTPUT_LAYER = <span class="number">10</span>; <span class="comment">//输出层维度</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> LEARN_RATE = <span class="number">0.3</span>; <span class="comment">//学习率</span></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> TRAIN_TIMES = <span class="number">10</span>; <span class="comment">//迭代训练次数</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BP</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="keyword">int</span> input_array[INPUT_LAYER]; <span class="comment">//输入向量</span></div><div class="line">    <span class="keyword">int</span> aim_array[OUTPUT_LAYER]; <span class="comment">//目标结果</span></div><div class="line">    <span class="keyword">double</span> weight1_array[INPUT_LAYER][HIDDEN_LAYER]; <span class="comment">//输入层与隐含层之间的权重</span></div><div class="line">    <span class="keyword">double</span> weight2_array[HIDDEN_LAYER][OUTPUT_LAYER]; <span class="comment">//隐含层与输出层之间的权重</span></div><div class="line">    <span class="keyword">double</span> output1_array[HIDDEN_LAYER]; <span class="comment">//隐含层输出</span></div><div class="line">    <span class="keyword">double</span> output2_array[OUTPUT_LAYER]; <span class="comment">//输出层输出</span></div><div class="line">    <span class="keyword">double</span> deviation1_array[HIDDEN_LAYER]; <span class="comment">//隐含层误差</span></div><div class="line">    <span class="keyword">double</span> deviation2_array[OUTPUT_LAYER]; <span class="comment">//输出层误差</span></div><div class="line">    <span class="keyword">double</span> threshold1_array[HIDDEN_LAYER]; <span class="comment">//隐含层阈值</span></div><div class="line">    <span class="keyword">double</span> threshold2_array[OUTPUT_LAYER]; <span class="comment">//输出层阈值</span></div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>; <span class="comment">//初始化各参数</span></div><div class="line">    <span class="function"><span class="keyword">double</span> <span class="title">Sigmoid</span><span class="params">(<span class="keyword">double</span> x)</span></span>; <span class="comment">//sigmoid激活函数</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetOutput1</span><span class="params">()</span></span>; <span class="comment">//得到隐含层输出</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetOutput2</span><span class="params">()</span></span>; <span class="comment">//得到输出层输出</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetDeviation1</span><span class="params">()</span></span>; <span class="comment">//得到隐含层误差</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">GetDeviation2</span><span class="params">()</span></span>; <span class="comment">//得到输出层误差</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Feedback1</span><span class="params">()</span></span>; <span class="comment">//反馈输入层与隐含层之间的权重</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Feedback2</span><span class="params">()</span></span>; <span class="comment">//反馈隐含层与输出层之间的权重</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Train</span><span class="params">()</span></span>; <span class="comment">//训练</span></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span></span>; <span class="comment">//测试</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// BP_H_INCLUDED</span></span></div></pre></td></tr></table></figure>
+<h3 id="BP-cpp文件"><a href="#BP-cpp文件" class="headerlink" title="BP.cpp文件"></a>BP.cpp文件</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BP.h"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="comment">//初始化各参数</span></div><div class="line"><span class="keyword">void</span> BP::Init()</div><div class="line">&#123;</div><div class="line">    srand(time(<span class="literal">NULL</span>));</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; INPUT_LAYER; i++)</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; HIDDEN_LAYER; j++)</div><div class="line">            weight1_array[i][j] = rand()/(<span class="keyword">double</span>)(RAND_MAX) * <span class="number">2</span> - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; HIDDEN_LAYER; i++)</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; OUTPUT_LAYER; j++)</div><div class="line">            weight2_array[i][j] = rand()/(<span class="keyword">double</span>)(RAND_MAX) * <span class="number">2</span> - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; HIDDEN_LAYER; i++)</div><div class="line">        threshold1_array[i] = rand()/(<span class="keyword">double</span>)(RAND_MAX) * <span class="number">2</span> - <span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; OUTPUT_LAYER; i++)</div><div class="line">        threshold2_array[i] = rand()/(<span class="keyword">double</span>)(RAND_MAX) * <span class="number">2</span> - <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//sigmoid激活函数</span></div><div class="line"><span class="keyword">double</span> BP::Sigmoid(<span class="keyword">double</span> x)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1.0</span> / (<span class="number">1.0</span> + <span class="built_in">exp</span>(-x));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//得到隐含层输出</span></div><div class="line"><span class="keyword">void</span> BP::GetOutput1()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; HIDDEN_LAYER; j++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">double</span> total = threshold1_array[j];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; INPUT_LAYER; i++)</div><div class="line">            total += input_array[i] * weight1_array[i][j];</div><div class="line">        output1_array[j] = Sigmoid(total);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//得到输出层输出</span></div><div class="line"><span class="keyword">void</span> BP::GetOutput2()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; OUTPUT_LAYER; j++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">double</span> total = threshold2_array[j];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; HIDDEN_LAYER; i++)</div><div class="line">            total += output1_array[i] * weight2_array[i][j];</div><div class="line">        output2_array[j] = Sigmoid(total);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//得到隐含层误差</span></div><div class="line"><span class="keyword">void</span> BP::GetDeviation1()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; HIDDEN_LAYER; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">double</span> total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; OUTPUT_LAYER; j++)</div><div class="line">            total += weight2_array[i][j] * deviation2_array[j];</div><div class="line">        deviation1_array[i] = (output1_array[i]) * (<span class="number">1.0</span> - output1_array[i]) * total;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//得到输出层误差</span></div><div class="line"><span class="keyword">void</span> BP::GetDeviation2()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; OUTPUT_LAYER; i++)</div><div class="line">        deviation2_array[i] = (output2_array[i]) * (<span class="number">1.0</span> - output2_array[i]) * (output2_array[i] - aim_array[i]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//反馈输入层与隐含层之间的权重</span></div><div class="line"><span class="keyword">void</span> BP::Feedback1()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; HIDDEN_LAYER; j++)</div><div class="line">    &#123;</div><div class="line">        threshold1_array[j] -= LEARN_RATE * deviation1_array[j];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; INPUT_LAYER; i++)</div><div class="line">            weight1_array[i][j] = weight1_array[i][j] - LEARN_RATE * input_array[i] * deviation1_array[j];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//反馈隐含层与输出层之间的权重</span></div><div class="line"><span class="keyword">void</span> BP::Feedback2()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; OUTPUT_LAYER; j++)</div><div class="line">    &#123;</div><div class="line">        threshold2_array[j] = threshold2_array[j] - LEARN_RATE * deviation2_array[j];</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; HIDDEN_LAYER; i++)</div><div class="line">            weight2_array[i][j] = weight2_array[i][j] - LEARN_RATE * output1_array[i] * deviation2_array[j];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//训练</span></div><div class="line"><span class="keyword">void</span> BP::Train()</div><div class="line">&#123;</div><div class="line">    FILE *train_images;</div><div class="line">    FILE *train_labels;</div><div class="line">    train_images = fopen(<span class="string">"train-images.idx3-ubyte"</span>, <span class="string">"rb"</span>);</div><div class="line">    train_labels = fopen(<span class="string">"train-labels.idx1-ubyte"</span>, <span class="string">"rb"</span>);</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> image[INPUT_LAYER];</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> label[OUTPUT_LAYER];</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> temp[<span class="number">100</span>];</div><div class="line">    <span class="comment">//读取文件开头</span></div><div class="line">    fread(temp, <span class="number">1</span>, <span class="number">16</span>, train_images);</div><div class="line">    fread(temp, <span class="number">1</span>, <span class="number">8</span>, train_labels);</div><div class="line">    <span class="keyword">int</span> times = <span class="number">0</span>; <span class="comment">//当前训练了几次</span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"开始训练..."</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">while</span> (!feof(train_images) &amp;&amp; !feof(train_labels))</div><div class="line">    &#123;</div><div class="line">        fread(image, <span class="number">1</span>, INPUT_LAYER, train_images);</div><div class="line">        fread(label, <span class="number">1</span>, <span class="number">1</span>, train_labels);</div><div class="line">        <span class="comment">//设置输入向量</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; INPUT_LAYER; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>((<span class="keyword">unsigned</span> <span class="keyword">int</span>)image[i] &lt; <span class="number">64</span>)</div><div class="line">                input_array[i] = <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                input_array[i] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//设置目标值</span></div><div class="line">        <span class="keyword">int</span> index = (<span class="keyword">unsigned</span> <span class="keyword">int</span>)label[<span class="number">0</span>];</div><div class="line">        <span class="built_in">memset</span>(aim_array, <span class="number">0</span>, <span class="keyword">sizeof</span>(aim_array));</div><div class="line">        aim_array[index] = <span class="number">1</span>;</div><div class="line">        GetOutput1(); <span class="comment">//得到隐含层输出</span></div><div class="line">        GetOutput2(); <span class="comment">//得到输出层输出</span></div><div class="line">        GetDeviation2(); <span class="comment">//得到输出层误差</span></div><div class="line">        GetDeviation1(); <span class="comment">//得到隐含层误差</span></div><div class="line">        Feedback1(); <span class="comment">//反馈输入层与隐含层之间的权重</span></div><div class="line">        Feedback2(); <span class="comment">//反馈隐含层与输出层之间的权重</span></div><div class="line">        ++times;</div><div class="line">        <span class="keyword">if</span>(times % <span class="number">2000</span> == <span class="number">0</span>)</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"已训练 "</span> &lt;&lt; times &lt;&lt; <span class="string">"组"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">if</span>(times % <span class="number">10000</span> == <span class="number">0</span>) <span class="comment">//每10000组就测试一下</span></div><div class="line">            Test();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//测试</span></div><div class="line"><span class="keyword">void</span> BP::Test()</div><div class="line">&#123;</div><div class="line">    FILE *test_images;</div><div class="line">    FILE *test_labels;</div><div class="line">    test_images = fopen(<span class="string">"t10k-images.idx3-ubyte"</span>, <span class="string">"rb"</span>);</div><div class="line">    test_labels = fopen(<span class="string">"t10k-labels.idx1-ubyte"</span>, <span class="string">"rb"</span>);</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> image[<span class="number">784</span>];</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> label[<span class="number">10</span>];</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> temp[<span class="number">100</span>];</div><div class="line">    <span class="comment">//读取文件开头</span></div><div class="line">    fread(temp, <span class="number">1</span>, <span class="number">16</span>, test_images);</div><div class="line">    fread(temp, <span class="number">1</span>, <span class="number">8</span>, test_labels);</div><div class="line">    <span class="keyword">int</span> total_times = <span class="number">0</span>; <span class="comment">//当前测试了几次</span></div><div class="line">    <span class="keyword">int</span> success_times = <span class="number">0</span>; <span class="comment">//当前正确了几次</span></div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"开始测试..."</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">while</span> (!feof(test_images) &amp;&amp; !feof(test_labels))</div><div class="line">    &#123;</div><div class="line">        fread(image, <span class="number">1</span>, INPUT_LAYER, test_images);</div><div class="line">        fread(label, <span class="number">1</span>, <span class="number">1</span>, test_labels);</div><div class="line">        <span class="comment">//设置输入向量</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; INPUT_LAYER; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> ((<span class="keyword">unsigned</span> <span class="keyword">int</span>)image[i] &lt; <span class="number">64</span>)</div><div class="line">                input_array[i] = <span class="number">0</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                input_array[i] = <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//设置目标值</span></div><div class="line">        <span class="built_in">memset</span>(aim_array, <span class="number">0</span>, <span class="keyword">sizeof</span>(aim_array));</div><div class="line">        <span class="keyword">int</span> index = (<span class="keyword">unsigned</span> <span class="keyword">int</span>)label[<span class="number">0</span>];</div><div class="line">        aim_array[index] = <span class="number">1</span>;</div><div class="line">        GetOutput1(); <span class="comment">//得到隐含层输出</span></div><div class="line">        GetOutput2(); <span class="comment">//得到输出层输出</span></div><div class="line">        <span class="comment">//以输出结果中最大的那个值所对应的数字作为预测的数字</span></div><div class="line">        <span class="keyword">double</span> maxn = <span class="number">-99999999</span>;</div><div class="line">        <span class="keyword">int</span> max_index = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; OUTPUT_LAYER; i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (output2_array[i] &gt; maxn)</div><div class="line">            &#123;</div><div class="line">                maxn = output2_array[i];</div><div class="line">                max_index = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//如果预测正确</span></div><div class="line">        <span class="keyword">if</span> (aim_array[max_index] == <span class="number">1</span>)</div><div class="line">            ++success_times;</div><div class="line">        ++total_times;</div><div class="line">        <span class="keyword">if</span>(total_times % <span class="number">2000</span> == <span class="number">0</span>)</div><div class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"已测试："</span> &lt;&lt; total_times &lt;&lt; <span class="string">"组"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"正确率: "</span> &lt;&lt; <span class="number">100.0</span> * success_times / total_times &lt;&lt; <span class="string">"%"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*************************"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    BP bp;</div><div class="line">    bp.Init();</div><div class="line">    <span class="comment">//训练数据反复利用TRAIN_TIMES次</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; TRAIN_TIMES; i++)</div><div class="line">    &#123;</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"开始第"</span> &lt;&lt; i + <span class="number">1</span> &lt;&lt; <span class="string">"轮迭代"</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">        bp.Train();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><p>本实验中，BP神经网络中人为可调的参数就两个，一个是隐含层维度，还有一个是学习率。隐含层维度影响了程序判断的正确性，同时也影响着程序运行的时间。学习率的设置也很有讲究，过小会导致收敛过慢以及陷入局部最优，过大会使得结果发生震荡。</p>
+<p>此外，由于BP神经网络在训练时有遗忘旧样本的趋势，所以对于60000组测试数据，我进行了反复利用，设置了迭代次数，使得正确率可以进一步提高，但也不可避免地增加了程序的运行时间。</p>
+<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>每一轮迭代都完整的使用了60000组训练数据，每训练10000组训练数据，就进行一次测试，取最佳准确率。      </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">- 第几轮迭代</th>
+<th style="text-align:center">- 最佳准确率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">92.22%</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">93.64%</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">94.13%</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">94.47%</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">94.69%</td>
+</tr>
+</tbody>
+</table>
+<p>可以发现，正确率的增长逐渐变得缓慢，程序的运行时间也要相应的加长。</p>
+<h2 id="可以改进的地方"><a href="#可以改进的地方" class="headerlink" title="可以改进的地方"></a>可以改进的地方</h2><p>由于60000组训练数据被反复训练，所以时间久了会出现过拟合现象，这可以通过画出”学习曲线”来观测，具体可以借鉴吴恩达老师的课程。解决的办法是每次随机地从60000组数据中抽取一部分进行训练，而不是60000组按顺序循环。</p>
+<p>此外，学习率我设为了固定值，其实可以根据训练的推进逐步变小，可以达到更好的效果。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>donate the author</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="陆轩韬 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="陆轩韬 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/人工智能/" rel="tag"><i class="fa fa-tag"></i> 人工智能</a>
+          
+            <a href="/tags/神经网络/" rel="tag"><i class="fa fa-tag"></i> 神经网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/29/俄罗斯方块/" rel="next" title="俄罗斯方块">
+                <i class="fa fa-chevron-left"></i> 俄罗斯方块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="陆轩韬" />
+          <p class="site-author-name" itemprop="name">陆轩韬</p>
+           
+              <p class="site-description motion-element" itemprop="description">一只等待进化为程序猿的猴子</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luxuantao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+		
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://luxuantao.github.io/web/index.html" title="个人主页 @ 陆轩韬" target="_blank">个人主页 @ 陆轩韬</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://jxtxzzw.com/" title="jxtxzzw空间 @ 张臻炜" target="_blank">jxtxzzw空间 @ 张臻炜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.ecnu.edu.cn/" title="EOJ @ ECNU" target="_blank">EOJ @ ECNU</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据集介绍"><span class="nav-number">1.</span> <span class="nav-text">数据集介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法描述"><span class="nav-number">2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#BP-h文件"><span class="nav-number">3.1.</span> <span class="nav-text">BP.h文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BP-cpp文件"><span class="nav-number">3.2.</span> <span class="nav-text">BP.cpp文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法分析"><span class="nav-number">4.</span> <span class="nav-text">算法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验结果"><span class="nav-number">5.</span> <span class="nav-text">实验结果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可以改进的地方"><span class="nav-number">6.</span> <span class="nav-text">可以改进的地方</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陆轩韬</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("56AdvCz2CdFFai1IYTnP9VvW-gzGzoHsz", "lUYIn1nVPECkvjqjN7cLvimt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
