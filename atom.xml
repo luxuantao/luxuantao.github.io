@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luxuantao.github.io/"/>
-  <updated>2018-07-29T01:23:16.857Z</updated>
+  <updated>2018-08-17T09:51:37.948Z</updated>
   <id>https://luxuantao.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WeChall Training: Programming 1</title>
+    <link href="https://luxuantao.github.io/2018/08/17/WeChall-Training-Programming-1/"/>
+    <id>https://luxuantao.github.io/2018/08/17/WeChall-Training-Programming-1/</id>
+    <published>2018-08-17T09:34:25.000Z</published>
+    <updated>2018-08-17T09:51:37.948Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>刚入ctf的坑，做一些题练练手。</p><p>WeChall上的题还是比较适合入门的。</p><a id="more"></a><p>题目如下：</p><blockquote><p>When you visit <a href="http://www.wechall.net/challenge/training/programming1/index.php?action=request" target="_blank" rel="external">this link</a> you receive a message.</p><p>Submit the same message back to <a href="http://www.wechall.net/challenge/training/programming1/index.php?answer=the_message" target="_blank" rel="external">http://www.wechall.net/challenge/training/programming1/index.php?answer=the_message</a></p><p>Your timelimit is 1.337 seconds</p></blockquote><p>给了个链接，点进去后显示一个字符串，要把它加在指定的URL中并进行访问，整个过程要在1.337秒内完成。</p><p>我竟然还真的手动试了几次。。。最快也要四秒。。。</p><p>正解就是写个脚本，我用Python实现，代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line">url = <span class="string">'http://www.wechall.net/challenge/training/programming1/index.php?action=request'</span></div><div class="line">cookie = dict(WC = <span class="string">'************************'</span>)</div><div class="line">re = requests.get(url, cookies = cookie)</div><div class="line">key = re.text</div><div class="line">url2 = <span class="string">'http://www.wechall.net/challenge/training/programming1/index.php?answer='</span></div><div class="line">y = requests.get(url2 + key, cookies = cookie)</div></pre></td></tr></table></figure><p>其中<code>************************</code>部分要填入的是你浏览器的cookie</p><p>至于如何查询cookie，这里我以Chrome浏览器为例：</p><ol><li><code>Ctrl+Shift+Delete</code>调出清除历史记录的界面，点击取消（这样的目的纯粹是因为方便一些）</li><li>依次点击<code>内容设置</code>-&gt;<code>Cookie</code>-&gt;<code>查看所有 Cookie 和网站数据</code></li><li>搜索<code>wechall.net</code>-&gt;找到名称为<code>WC</code>的cookie内容</li></ol><p>PS：上面的代码运行完成后并不会出现提示性的语句，但是你会惊奇地发现题目已经过了</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;刚入ctf的坑，做一些题练练手。&lt;/p&gt;
+&lt;p&gt;WeChall上的题还是比较适合入门的。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="python" scheme="https://luxuantao.github.io/categories/python/"/>
+    
+    
+      <category term="WeChall" scheme="https://luxuantao.github.io/tags/WeChall/"/>
+    
+  </entry>
   
   <entry>
     <title>手动搭建BP神经网络</title>
@@ -220,34 +244,6 @@
     
     
       <category term="多线程" scheme="https://luxuantao.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>耻辱</title>
-    <link href="https://luxuantao.github.io/2018/03/09/%E8%80%BB%E8%BE%B1/"/>
-    <id>https://luxuantao.github.io/2018/03/09/耻辱/</id>
-    <published>2018-03-09T08:07:28.000Z</published>
-    <updated>2018-03-09T08:18:56.209Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>我要变得更强。</p><p>我必须变得更强。</p><p>我肯定会变得更强。</p><p>相信是金子总能发光。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;hr&gt;
-&lt;p&gt;我要变得更强。&lt;/p&gt;
-&lt;p&gt;我必须变得更强。&lt;/p&gt;
-&lt;p&gt;我肯定会变得更强。&lt;/p&gt;
-&lt;p&gt;相信是金子总能发光。&lt;/p&gt;
-
-      
-    
-    </summary>
-    
-      <category term="随笔" scheme="https://luxuantao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
