@@ -152,7 +152,7 @@ nav .logo {
 	background: #262149;
 	color: white;
 	padding: 80px;
-	height: 1200px;
+	height: 1600px;
 }
 
 .grow-section .heading-wrapper {
@@ -199,6 +199,14 @@ h3 {
 
 .card:nth-child(6) {
 	background: rgba(0,0,0,0.24);
+}
+
+.card:nth-child(7) {
+	background: rgba(0,0,0,0.28);
+}
+
+.card:nth-child(8) {
+	background: rgba(0,0,0,0.32);
 }
 
 /************************************/
