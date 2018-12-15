@@ -1,198 +1,1139 @@
-
 <!DOCTYPE html>
-<html lang="zh-cn">
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-	<meta charset="UTF-8">
-	<title>陆轩韬个人主页</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #FFFFCC; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Welcome to Luson's home" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="陆轩韬个人主页 	 	 	 	 	 	 	 	 	  	 	  	 	 	  	 	  	 	  	 	 		 	 		 			 				 					 						陆轩韬Home Page 						就怕你宁愿流泪望天却不昂首向前 					 				 				 					 						 							个人信息 							华东师范大学计算机系 								本科生">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Welcome to Luson&#39;s home">
+<meta property="og:url" content="https://luxuantao.github.io/web/index.html">
+<meta property="og:site_name" content="Welcome to Luson&#39;s home">
+<meta property="og:description" content="陆轩韬个人主页 	 	 	 	 	 	 	 	 	  	 	  	 	 	  	 	  	 	  	 	 		 	 		 			 				 					 						陆轩韬Home Page 						就怕你宁愿流泪望天却不昂首向前 					 				 				 					 						 							个人信息 							华东师范大学计算机系 								本科生">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/person1.png">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/person2.png">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/person3.png">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/person4.png">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/pic01.jpg">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/pic02.jpg">
+<meta property="og:image" content="https://luxuantao.github.io/web/images/pic03.jpg">
+<meta property="og:updated_time" content="2018-12-15T08:28:31.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Welcome to Luson&#39;s home">
+<meta name="twitter:description" content="陆轩韬个人主页 	 	 	 	 	 	 	 	 	  	 	  	 	 	  	 	  	 	  	 	 		 	 		 			 				 					 						陆轩韬Home Page 						就怕你宁愿流泪望天却不昂首向前 					 				 				 					 						 							个人信息 							华东师范大学计算机系 								本科生">
+<meta name="twitter:image" content="https://luxuantao.github.io/web/images/person1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luxuantao.github.io/web/"/>
+
+
+
+
+
+  <title> | Welcome to Luson's home</title>
+  
+
+
+
+
+
+
+
+
 </head>
-<body>
-	<div class="main-wrapper">
-		<!-- 页头 -->
-		<header>
-			<nav>
-				<div class="logo">陆轩韬个人主页</div>
-				<ul>
-					<li><a href="#info">个人信息</a></li>
-					<li><a href="#grow">成长心路</a></li>
-					<li><a href="#wife">我的老婆们</a></li>
-					<li><a href="https://luxuantao.github.io/" target="_blank">个人博客</a></li>
-				</ul>	
-			</nav>
 
-			<div id="banner">
-				<div class="inner">
-					<h1>陆轩韬</h1>
-					<p class="sub-heading">就怕你宁愿流泪望天却不昂首向前</p>
-					<a href="#info"><button>About Me</button></a>
-				</div>	
-			</div>
-		</header>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-		<!-- 内容 -->
-		<div class="content">
-			<section class="info-section" id="info">
-				<div class="wrapper">
-					<h2>个人信息</h2>
-					<div class="hr"></div>
-					<p class="sub-heading">
-						华东师范大学计算机系大二学生一枚
-						<br>
-						并不精通C C++ Java Python
-						<br>
-						酷爱编程！享受编程！
-					</p>
-					<div class="icon-group">
-						<span class="icon"></span>
-						<span class="icon"></span>
-						<span class="icon"></span>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+	 <a href="https://github.com/luxuantao">
+	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+	 </a>
+	 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to Luson's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就怕你宁愿流泪望天却不昂首向前</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline"></h1>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>陆轩韬个人主页</title>
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Themify Icons-->
+	<link rel="stylesheet" href="css/themify-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	</head>
+	<body>
+		
+	<div id="page">
+		<div class="gtco-services gtco-section">
+			<div class="gtco-container">
+				<div class="row row-pb-sm">
+					<div class="col-md-8 col-md-offset-2 gtco-heading text-center">
+						<h2 style="border-top: 3px solid ;
+	border-bottom: 3px solid; width=300px;">陆轩韬<br>Home Page</h2>
+						<p>就怕你宁愿流泪望天却不昂首向前</p>
 					</div>
 				</div>
-			</section>
-
-			<section class="grow-section" id="grow">
-				<div class="wrapper">
-					<div class="heading-wrapper">
-						<h2>成长心路</h2>
-						<div class="hr"></div>
-						<div class="sub-heading">
-							Where there is a will there is a way.
+				<div class="row row-pb-md">
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-pie-chart"></i>个人信息</h3>
+							<p>华东师范大学计算机系<br>
+								本科生<br>
+								酷爱编程！享受编程！</p>
 						</div>
 					</div>
-					<div class="card-group">
-						<div class="card">
-							<h3>大一上</h3>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-settings"></i>开发经历</h3>
+							<p>Arduino避障小车<br>
+							JetsonTX2+Caffe物体识别<br>
+							NAO机器人<br>
+							博客及个人主页</p>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-ruler-pencil"></i> 情感经历</h3>
+							<p>白纸一张<br>
+							啥都不缺<br>
+						就缺一个女朋友</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END .gtco-services -->
+	
+		<div class="gtco-section gtco-products">
+			<div class="gtco-container">
+				<div class="row row-pb-sm">
+					<div class="col-md-8 col-md-offset-2 gtco-heading text-center">
+						<h2>成长心路</h2>
+						<p>Where there is a will there is a way.</p>
+					</div>
+				</div>
+
+				<div class="row row-pb-md">
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-pie-chart"></i>大一上</h3>
 							<p>小白一个<br>
 							啥都不懂<br>
 							苦学C语言<br>
 							刷爆EOJ一百题</p>
 						</div>
-						<div class="card">
-							<h3>大一下</h3>
-							<p>基本入门C语言<br>
+					</div>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-ruler-pencil"></i> 大一下</h3>
+							<p>
 							开始学习算法和C++<br>
 							EOJ突破三百题<br>
 							VJudge突破一百题<br>
-							混了个ECNU Coder二等奖<br>
-							</p>
+							混了个ECNU Coder二等奖</p>
 						</div>
-						<div class="card">
-							<h3>大二上</h3>
-							<p>基本掌握C++<br>
+					</div>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-settings"></i> 大二上</h3>
+							<p>
 							开始学习Java,Python<br>
 							获得国家励志奖学金<br>
 							华东师范大学优秀学生一等奖学金<br>
 							荣获华东师范大学优秀学生称号<br>
 							计软院创新创业大赛优胜奖</p>
 						</div>
-						<div class="card">
-							<h3>大二下</h3>
+					</div>
+				</div>
+
+				<div class="row row-pb-md">
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-pie-chart"></i>大二下</h3>
 							<p>ECNU Coder三等奖<br>
 							51nod突破150题<br>
 							leetcode突破150题<br>
 							ACM-ICPC上海大都会赛打铁<br>
 							全国物联网大赛打铁<br>
-							CTF打铁<br>
-							</p>
+							CTF打铁</p>
 						</div>
-						<div class="card">
-							<h3>大三上</h3>
+					</div>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-ruler-pencil"></i> 大三上</h3>
 							<p>
-							巩固Java和Python的学习<br>
-							开始学习Android<br>
+							2018年中国机器人技能大赛Nao机器人舞蹈<br>
+							全国第三(队长)<br>
 							获得国家励志奖学金<br>
-							华东师范大学优秀学生一等奖学金<br>
-							</p>
+							华东师范大学优秀学生一等奖学金</p>
 						</div>
-						<div class="card">
-							<h3>大三下</h3>
-							<p>
-							to be continue...
-							</p>
-						</div>
-						<div class="card">
-							<h3>大四上</h3>
-							<p>
-							to be continue...
-							</p>
-						</div>
-						<div class="card">
-							<h3>大四下</h3>
-							<p>
-							to be continue...
-							</p>
+					</div>
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-settings"></i> 大三下</h3>
+							<p>to be continue...</p>
 						</div>
 					</div>
 				</div>
-			</section>
 
-			<section class="wife-section" id="wife">
-				<div class="wrapper">
-					<h2>我的老婆们</h2>
-					<div class="hr"></div>
-				</div>
-				<div class="article-preview">
-					<div class="text-section">
-						<h2>新垣结衣</h2>
-						<ul>
-							<li>星座: 双子座</li>
-							<li>身高: 168cm</li>
-							<li>出生日期: 1988年6月11日</li>
-							<li>出生地: 日本冲绳县那霸市</li>
-							<p>2016年，主演10月开播的新剧《逃避虽可耻但很有用》。 2017年11月，新垣结衣凭借《Code Blue 第三季》中的演出获得第94届日剧学院赏最佳女配角。</p>
-						</ul>
+				<div class="row row-pb-md">
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-pie-chart"></i> 大四上</h3>
+							<p>to be continue...</p>
+						</div>
 					</div>
-					<div class="img-section">
-						<img src="img/pic01.jpg">
+					<div class="col-md-4 col-sm-4 service-wrap">
+						<div class="service">
+							<h3><i class="ti-ruler-pencil"></i> 大四下</h3>
+							<p>to be continue...</p>
+						</div>
 					</div>
 				</div>
-				<div class="article-preview">
-					<div class="img-section">
-						<img src="img/pic02.jpg">
-					</div>
-					<div class="text-section">
-						<h2>有村架纯</h2>
-						<ul>
-							<li>星座: 水瓶座</li>
-							<li>身高: 159cm</li>
-							<li>出生日期: 1993年2月13日</li>
-							<li>出生地: 日本兵库县</li>
-							<p>2014年，主演电视剧《失恋巧克力职人》并参与动画电影《回忆中的玛妮》的配音。2015年，在WOWOW台日剧《潜入海底》中首次担任主演 。</p>
-						</ul>
-					</div>
-				</div>
-				<div class="article-preview">
-					<div class="text-section">
-						<h2>谭松韵</h2>
-						<ul>
-							<li>星座: 双子座</li>
-							<li>身高: 165cm</li>
-							<li>出生日期: 1990年5月31日</li>
-							<li>出生地: 四川泸州</li>
-							<p>2017年5月18日，凭借《旋风少女》获得第22届华鼎奖中国百强电视剧最佳新锐演员。11月，其出演的星素演技PK节目《演员的诞生》在浙江卫视播出。</p>
-						</ul>
-					</div>
-					<div class="img-section">
-						<img src="img/pic03.jpg">
-					</div>
-				</div>
-			</section>
+
+			</div>
 		</div>
-		
-		<!-- 页脚 -->
-		<footer>
-			<div class="share-group">
-				<div class="img-section">
-					<a href="https://github.com/luxuantao" target="_blank"><img src="img/github.png"></a>
+	
+		<div class="gtco-section gtco-testimonial gtco-gray">
+			<div class="gtco-container">
+
+				<div class="row row-pb-sm">
+					<div class="col-md-8 col-md-offset-2 gtco-heading text-center">
+						<h2>大牛名录</h2>
+						<p>站在巨人的肩膀上</p>
+					</div>
 				</div>
-				<div class="img-section">
-					<a href="https://luxuantao.github.io/" target="_blank"><img src="img/blog.png"></a>
+
+				<div class="row">
+					<div class="col-md-6 col-sm-6 animate-box">
+						<div class="gtco-testimony gtco-left">
+							<div><img src="images/person1.png"></div>
+							<blockquote>
+								<p>&ldquo;Science is a differential equation, Religion is a boundary condition.&rdquo; <cite class="author">&mdash; Alan Mathison Turing</cite></p>
+							</blockquote>	
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-6 animate-box">
+						<div class="gtco-testimony gtco-left">
+							<div><img src="images/person2.png"></div>
+							<blockquote>
+								<p>&ldquo;Do you want to spend the rest of your life selling sugared water or do you want a chance to change the world?.&rdquo; <cite class="author">&mdash; Steve Jobs</cite></p>
+							</blockquote>	
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 col-sm-6 animate-box">
+						<div class="gtco-testimony gtco-left">
+							<div><img src="images/person3.png"></div>
+							<blockquote>
+								<p>&ldquo;UNIX is very simple. But it takes a certain amount of talent to understand this simplicity.&rdquo; <cite class="author">&mdash; Dennis Ritchie</cite></p>
+							</blockquote>	
+						</div>
+					</div>
+
+					<div class="col-md-6 col-sm-6 animate-box">
+						<div class="gtco-testimony gtco-left">
+							<div><img src="images/person4.png"></div>
+							<blockquote>
+								<p>&ldquo;Software is like sex： it”s better when it”s free.&rdquo; <cite class="author">&mdash; Linus Torvalds</cite></p>
+							</blockquote>	
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="copy">
-				&copy 陆轩韬 2018
+		</div>
+
+		<div class="gtco-section gtco-products">
+			<div class="gtco-container">
+				<div class="row row-pb-sm">
+					<div class="col-md-8 col-md-offset-2 gtco-heading text-center">
+						<h2>我的老婆(s)</h2>
+						<p>原谅我加了个's'</p>
+					</div>
+				</div>
+				<div class="row row-pb-md">
+					<div class="col-md-4 col-sm-4">
+						<div class="overlay">
+							<i class="ti-arrow-top-right"></i>
+							<div class="copy">
+								<h3>新垣结衣</h3>
+								<p>星座: 双子座<br>
+									身高: 168cm<br>
+									出生日期: 1988年6月11日<br>
+									出生地: 日本冲绳县那霸市</p>
+							</div>
+						</div>
+						<img src="images/pic01.jpg" style="height: 200px; width: 300px;">
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<div class="overlay">
+							<i class="ti-arrow-top-right"></i>
+							<div class="copy">
+								<h3>有村架纯</h3>
+								<p>星座: 水瓶座<br>
+									身高: 159cm<br>
+								出生日期: 1993年2月13日<br>
+								出生地: 日本兵库县</p>
+							</div>
+						</div>
+						<img src="images/pic02.jpg" style="height: 200px; width: 300px;">
+					</div>
+					<div class="col-md-4 col-sm-4">
+						<div class="overlay">
+							<i class="ti-arrow-top-right"></i>
+							<div class="copy">
+								<h3>谭松韵</h3>
+								<p>星座: 双子座<br>
+									身高: 165cm<br>
+									出生日期: 1990年5月31日<br>
+										出生地: 四川泸州</p>
+							</div>
+						</div>
+						<img src="images/pic03.jpg" style="height: 220px; width: 300px;">
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END .gtco-products -->
+
+		
+
+		
+		
+
+		<footer id="gtco-footer" class="gtco-section" role="contentinfo">
+			<div class="gtco-container">
+				<div class="row row-pb-md">
+					<div class="col-md-8 col-md-offset-2 gtco-cta text-center">
+						<p class="btn btn-white btn-outline">Contact Me</p>
+					</div>
+				</div>
+				<div class="row row-pb-md">
+					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
+						<h3>University</h3>
+						<p>华东师范大学中山北路校区<br>中山北路3663号</p>
+					</div>
+					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
+						<h3>Email</h3>
+						<p>luxuantao@126.com</p>
+					</div>
+					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
+						<h3>Blog</h3>
+						<a href="https://luxuantao.github.io" target="_blank">https://luxuantao.github.io</a>
+					</div>
+					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
+						<h3>Github</h3>
+						<a href="https://github.com/luxuantao" target="_blank">https://github.com/luxuantao</a>
+					</div>
+
+				</div>
+			</div>
+			<div class="gtco-copyright">
+				<div class="gtco-container">
+					<div class="row">
+						<p>&copy; 陆轩韬 2017~2019</p>
+					</div>
+				</div>
 			</div>
 		</footer>
+
 	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="陆轩韬" />
+          <p class="site-author-name" itemprop="name">陆轩韬</p>
+           
+              <p class="site-description motion-element" itemprop="description">一只等待进化为程序猿的猴子</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">41</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luxuantao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+		
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://luxuantao.github.io/web/index.html" title="个人主页 @ 陆轩韬" target="_blank">个人主页 @ 陆轩韬</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://jxtxzzw.com/" title="jxtxzzw空间 @ 张臻炜" target="_blank">jxtxzzw空间 @ 张臻炜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.ecnu.edu.cn/" title="EOJ @ ECNU" target="_blank">EOJ @ ECNU</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">陆轩韬Home Page</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">个人信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">开发经历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text"> 情感经历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">成长心路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">大一上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text"> 大一下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text"> 大二上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">大二下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text"> 大三上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text"> 大三下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.</span> <span class="nav-text"> 大四上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.8.</span> <span class="nav-text"> 大四下</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">大牛名录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">我的老婆(s)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">新垣结衣</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">有村架纯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">谭松韵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.4.</span> <span class="nav-text">University</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.5.</span> <span class="nav-text">Email</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.6.</span> <span class="nav-text">Blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">4.7.</span> <span class="nav-text">Github</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陆轩韬</span>
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共34.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("56AdvCz2CdFFai1IYTnP9VvW-gzGzoHsz", "lUYIn1nVPECkvjqjN7cLvimt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
