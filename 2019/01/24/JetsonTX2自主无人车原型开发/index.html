@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #FFFFCC; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器视觉," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Welcome to Luson's home" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android 项目github地址：https://github.com/luxuantao/jetsontx2_car">
+<meta name="keywords" content="机器视觉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JetsonTX2自主无人车原型开发">
+<meta property="og:url" content="https://luxuantao.github.io/2019/01/24/JetsonTX2自主无人车原型开发/index.html">
+<meta property="og:site_name" content="Welcome to Luson&#39;s home">
+<meta property="og:description" content="本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android 项目github地址：https://github.com/luxuantao/jetsontx2_car">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-24T10:06:46.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JetsonTX2自主无人车原型开发">
+<meta name="twitter:description" content="本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android 项目github地址：https://github.com/luxuantao/jetsontx2_car">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luxuantao.github.io/2019/01/24/JetsonTX2自主无人车原型开发/"/>
+
+
+
+
+
+  <title>JetsonTX2自主无人车原型开发 | Welcome to Luson's home</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+	 <a href="https://github.com/luxuantao">
+	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+	 </a>
+	 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to Luson's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就怕你宁愿流泪望天却不昂首向前</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2019/01/24/JetsonTX2自主无人车原型开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陆轩韬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Luson's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JetsonTX2自主无人车原型开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-24T16:46:26+08:00">
+                2019-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JetsonTX2/" itemprop="url" rel="index">
+                    <span itemprop="name">JetsonTX2</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/24/JetsonTX2自主无人车原型开发/" class="leancloud_visitors" data-flag-title="JetsonTX2自主无人车原型开发">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃&nbsp; | &nbsp;</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,639 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android</p>
+<p>项目github地址：<a href="https://github.com/luxuantao/jetsontx2_car" target="_blank" rel="external">https://github.com/luxuantao/jetsontx2_car</a></p>
+<a id="more"></a>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当初搞这个项目，纯粹是我一厢情愿。自从有了JetsonTX2开发板，就想着这么又贵又强的东西不用怎么行。断断续续搞了一学期，也算学了不少新东西。队里加我总共四个人，其中三个不干活的（没错，从头到尾只有我一个人在瞎忙活）。你问我有怨气吗，自然是有的，这学期第13周的时候，我把物体识别的任务交给了一位队友，就想着后面要期末考所以特地提前了些，结果他硬生生地拖到第十九周学期结束，都没有碰一下开发板。罢了，给他学习的机会他不要，又能怪谁呢？而且我在一开始申报项目时就做好了一带三的准备，那么好，opencv，caffe，arduino，android，全都由我一个人负责。</p>
+<p>我不贴代码，arduino和android的全部代码可以从<a href="https://github.com/luxuantao/jetsontx2_car获取。" target="_blank" rel="external">https://github.com/luxuantao/jetsontx2_car获取。</a></p>
+<p>这是一篇开发手札，主要是写给我自己看的，记录一下开发中遇到的问题。</p>
+<h2 id="已完成的目标"><a href="#已完成的目标" class="headerlink" title="已完成的目标"></a>已完成的目标</h2><ul>
+<li>JetsonTX2架设在小车上，调用usb摄像头，能够识别出20种不同的物体，包括人，车，显示屏等等，并能将带有标记的流（实际上传的是图片）传回手机</li>
+<li>用于控制小车和显示回传视频的app</li>
+<li>小车用anduino开发，有两种运行模式：手动控制行驶（由app和anduino蓝牙通信实现）和自动行驶（由一组超声波模块+三组红外探测模块实现避障），可随时通过app切换模式</li>
+</ul>
+<p>##Arduino小车部分</p>
+<p>最先做的是小车，网上买的小车零件，买回来后要自己全部一个个拼接起来，比如扩展板上，每一个排角，电阻都要自己焊上去。这里要感谢我的爸爸，他虽然不怎么懂编程，但是焊接东西他很拿手，帮我一个部件一个部件的焊好，前后焊了有一周的时间，感谢我的爸爸，没有他，第一步都没法完成。</p>
+<p>小车上最重要的是这些模块：正前方的一组超声波云台模块，正前方/左前方/右前方各一组红外探测模块，以及一组蓝牙模块。为什么正前方又要装超声波又要装红外？因为超声波打的距离比较远，能提早做出判断，但是在车上的位置比较高，打不到较低的地方，所以我在低处补了一组红外探测模块，做两手准备。而左前方和右前方的红外探测模块是后来加的，因为当小车以接近四十五度角接近前方障碍时，无法通过正前方的超声波和红外探测到，所以我在左前方和右前方各补了一个红外，效果不错。</p>
+<h2 id="JetsonTX2部分"><a href="#JetsonTX2部分" class="headerlink" title="JetsonTX2部分"></a>JetsonTX2部分</h2><p>NVIDIA的JetsonTX2是比JetsonTX1性能更强的一块开发板（不过最近好像又有了一块比JetsonTX2还要厉害的开发板）。说它是开发板，其实并不准确，它其实是一台嵌入式计算机，由于其GPU的强大，专门用于做图像处理方面的工作。</p>
+<p>刚到手的JetsonTX2是一台裸机，内置ubuntu16.04操作系统，看上去就和普通的计算机没什么两样。要让它变得更强，先要在NVIDIA的官网上下载JetPack开发包，装好后，就有了CUDA等一系列基础设施。</p>
+<p>关于图像识别，我用的是<code>Faster R-CNN</code> ，但是用它之前，先要装好<code>Caffe</code> 和 <code>PyCaffe</code> ，但是装<code>Caffe</code> 之前，先要装好<code>opencv</code> 。是不是感觉挺麻烦的？没错，难就难在这，有不少依赖要装，而且要翻墙。给出一个很不错的博客，我基本上就是照着这个博客中所说的一步步做的，装了两天（其中caffe装了两遍，注意一定要用python2）。</p>
+<p>opencv3安装：<a href="https://jkjung-avt.github.io/opencv3-on-tx2/" target="_blank" rel="external">https://jkjung-avt.github.io/opencv3-on-tx2/</a></p>
+<p>caffe安装：<a href="https://jkjung-avt.github.io/caffe-on-tx2/" target="_blank" rel="external">https://jkjung-avt.github.io/caffe-on-tx2/</a></p>
+<p>opencv3和caffe都是下载源码在本地编译，所以很慢很慢。。。</p>
+<p>然后就是套<code>Faster R-CNN</code>：<a href="https://jkjung-avt.github.io/faster-rcnn/" target="_blank" rel="external">https://jkjung-avt.github.io/faster-rcnn/</a> ，用到了别人训练好的模型，细心的你会发现github上说这个模型已经废弃了，现在有更快的模型可以用。没错，<code>Faster R-CNN</code> 虽然有个<code>Faster</code> 但是它的速度真心不快，0.9秒识别一张图片（后面会提到如何加速），但是这个模型的准确度非常好，比起别的模型更具优势，所以我还是采用了这个模型。</p>
+<p>那如何做到更快呢，<a href="https://jkjung-avt.github.io/making-frcn-faster/" target="_blank" rel="external">https://jkjung-avt.github.io/making-frcn-faster/</a> 里面提到可以用<code>GoogLeNet</code>换掉速度较慢的<code>VGG16</code> ，也就是对神经网络中的某一层做了改动，但是简简单单的这一步带来的改良是巨大的，在JetsonTX2开最佳性能的情况下<code>sudo nvpmodel -m 0</code>，可以做到0.5秒识别一张图片。</p>
+<p>视频流可以选择使用板载摄像头或者自己搞个usb摄像头，我都试了下，运行后，opencv会在JetsonTX2上会新建一个窗口，里面实时显示带有识别框的图片，每0.5秒换一次图片。</p>
+<p>##Android部分</p>
+<p>手机是通过蓝牙和小车交互，但是由于和JetsonTX2需要进行图片流的传输，数据量较大，所以采用Wifi，经TCP传输，socket通信。</p>
+<p><a href="https://jkjung-avt.github.io/faster-rcnn/中提到的`demo_camera.py`" target="_blank" rel="external">https://jkjung-avt.github.io/faster-rcnn/中提到的`demo_camera.py`</a> 自然不包括传图片的回手机的部分，这个需要自己实现。原本代码中用于显示在窗口中的每一张图片其实是一个三维的<code>ndarray</code>（长、宽和RGB），我的做法是把这个<code>ndarray</code>转换为照片先存在本地，然后再读取这个图片把它传输出去。这里有个坑，<code>ndarray</code>中的某两个颜色次序（好像是G和B）要反一下，不然生成的图片你会觉得颜色不对劲。</p>
+<p>##其他</p>
+<p>我也试了试<code>yolov3</code>，<a href="https://jkjung-avt.github.io/yolov3/" target="_blank" rel="external">https://jkjung-avt.github.io/yolov3/</a> ，但是实际效果很差，主要是延时太久，理论上<code>yolov3</code> 的速度应该是最快的，可能是有什么没注意到的地方，今后再说。</p>
+<p>PS：很多事情只能靠自己。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>donate the author</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="陆轩韬 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="陆轩韬 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器视觉/" rel="tag"><i class="fa fa-tag"></i> 机器视觉</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/03/tensorflow实现手写体数字识别/" rel="next" title="tensorflow实现手写体数字识别">
+                <i class="fa fa-chevron-left"></i> tensorflow实现手写体数字识别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="陆轩韬" />
+          <p class="site-author-name" itemprop="name">陆轩韬</p>
+           
+              <p class="site-description motion-element" itemprop="description">一只等待进化为程序猿的猴子</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luxuantao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+		
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://luxuantao.github.io/web/index.html" title="个人主页 @ 陆轩韬" target="_blank">个人主页 @ 陆轩韬</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://jxtxzzw.com/" title="jxtxzzw空间 @ 张臻炜" target="_blank">jxtxzzw空间 @ 张臻炜</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://acm.ecnu.edu.cn/" title="EOJ @ ECNU" target="_blank">EOJ @ ECNU</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#已完成的目标"><span class="nav-number">2.</span> <span class="nav-text">已完成的目标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JetsonTX2部分"><span class="nav-number">3.</span> <span class="nav-text">JetsonTX2部分</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陆轩韬</span>
+</div>
+
+<!--
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+-->
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共36.5k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("56AdvCz2CdFFai1IYTnP9VvW-gzGzoHsz", "lUYIn1nVPECkvjqjN7cLvimt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
