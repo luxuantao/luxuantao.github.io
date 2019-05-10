@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luxuantao.github.io/"/>
-  <updated>2019-03-28T11:40:30.432Z</updated>
+  <updated>2019-05-10T00:49:02.593Z</updated>
   <id>https://luxuantao.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>春招面试心路</title>
+    <link href="https://luxuantao.github.io/2019/05/09/%E6%98%A5%E6%8B%9B%E9%9D%A2%E8%AF%95%E5%BF%83%E8%B7%AF/"/>
+    <id>https://luxuantao.github.io/2019/05/09/春招面试心路/</id>
+    <published>2019-05-09T10:01:26.000Z</published>
+    <updated>2019-05-10T00:49:02.593Z</updated>
+    
+    <content type="html"><![CDATA[<p>本文并不是一篇面经，其中只谈到了我在大三下的春季招聘中遇到的那些事。</p><a id="more"></a><p>先说结果：今天收到了正式offer，已被<strong>字节跳动–上海抖音部门–测试开发岗</strong>录用。</p><p>接下来从头开始说起。</p><p>我的第一次工作面试给了腾讯，在3月初，提前批，后端开发，现场面试，第一次本就没什么经验，前一晚甚至都没睡好，一大早翘了课去面试，结果面试官问的好多题都答不上来。而且面试官上来问我平时玩游戏吗？我说不怎么玩，结束了告诉我：他是天美的。一面挂。</p><p>然后就是合合信息，来我们学校办了宣讲会，我参加了宣讲会的笔试，通过了。后来去现场面试（离我家还挺近），后端开发，技术面就一面（还有点水），过了直接打电话叫hr来面，对我意向不错，问我什么时候能确定来不来，我说暑假前。至此没了后文。</p><p>阿里提前批内推，没想好做啥，随便报了个前端，突然电话面试，当场去世，全程不在一个频道。</p><p>然后就是重头戏：字节跳动，抖音后端开发（注意这里是后端），视频面试，在一个周六的早上，连着三面技术面，两个半小时，面到大脑缺氧，但还是撑过去了。过了两周，HR打电话说过了，给了口头offer，我很激动，回绝了基本上所有的笔试面试。然后就一直在等正式offer，HR说负责人在国外，要等一阵子。</p><p>期间，腾讯开始了正式批面试，我被调剂到了应用开发岗，当时都没明确回复接受面试邀请还是拒绝，（心里想着已经有字节跳动了，不想搞这么累再去面了）。到了时间，面试官还是打来了电话，上来就问我是不是已经有offer了，应该是听出了我的心不在焉，然后就面了十分钟，没问什么技术含量的问题。过了会儿，手机一查，已挂。</p><p>此外，微软的笔试也过了，但面试在闵行，想着太远了就没去。</p><p>过了一周，字节跳动的HR突然联系我，说我的offer被负责人驳回了，当时心态大崩，因为当时的我已经没有了退路。只得恳求说能不能换个岗，HR说会想想办法，然后又是等。。。</p><p>无奈，只能再找找别的，华为的笔试我本来都拒绝了，理由也写的很清楚，已收到字节跳动的offer，后来一想真是打脸，厚着脸皮做了在线笔试题，两个小时三题，结果一个半小时就ak了（确实简单）。</p><p>此外，还有摩根士丹利，第一轮是电话面试，全英语。。。不过还是过了，并不是因为我的英语有多好，应该是最后一道逻辑题在提示下答上来了。</p><p>再回到字节跳动，HR把我换到了后端开发（独立闭环业务），但是这个部门一直没反应，只得再问我愿意去测试开发吗，我哪里还顾得那么多，直接果断答应了，当天测试开发的HR就联系了我，说要加一轮技术面，问我什么时候有空，我说五一后，约在了五一后的周一上午十一点半（留意这个时间点）。</p><p>期间，摩根士丹利和华为也问我什么时候能去面试，我也都说五一后（剩下的这三家公司我自然是最想去字节跳动）。还有个小插曲，我在校内的游族杯程序设计竞赛拿了一等奖，获得了游族网络的实习直通卡，当天HR就联系了我，问我想不想去，我说可以考虑，但是直到今天也没有收到消息。</p><p>五一没过好，心情很复杂。</p><p>周一上午十一点半面试，我要从家里赶到学校，想着面完试不一定有时间去食堂吃饭，母亲就说给我买点面包，十点休息回家带给我，我算着时间有些紧张，但还是答应了。结果母亲回家的时候太心急，电动车开得太快，差点和一辆小货车撞到一起，自己摔倒，受了伤。我赶紧开了电动车去事发现场，也没时间说上几句话，拿了面包就要赶去学校了，去的路上我一直在想：一定要过，不然对不起母亲。</p><p>提前赶到了学校，我就一直在等（我以为是电话面试，因为邮箱里一直没见到面试链接），11点40，HR打来了电话，问我怎么还没上线？我就惊了，一开邮箱，发现面试链接静静地躺在垃圾邮箱里。。。赶紧上线面试，面试官倒也不介意，面了半小时，感觉还可以。</p><p>当天晚上，HR联系了我，说我早上面试过了，现在要加一轮HR面（这是我在字节跳动的第六面。。。）</p><p>聊得很不错，直接给了offer意向。这次我有点高兴不起来，因为有了之前的经历，总觉得口头offer不可信。过了三天，也就是今天，终于收到了正式offer。</p><p>嗯。可以理直气壮地拒掉其他公司了。</p><p>PS：b站和谷歌，简历都没过。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本文并不是一篇面经，其中只谈到了我在大三下的春季招聘中遇到的那些事。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://luxuantao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>C++查缺补漏</title>
@@ -444,29 +464,6 @@
     
       <category term="Arduino" scheme="https://luxuantao.github.io/categories/Arduino/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>第一道交互题</title>
-    <link href="https://luxuantao.github.io/2017/09/15/%E7%AC%AC%E4%B8%80%E9%81%93%E4%BA%A4%E4%BA%92%E9%A2%98/"/>
-    <id>https://luxuantao.github.io/2017/09/15/第一道交互题/</id>
-    <published>2017-09-15T10:05:22.000Z</published>
-    <updated>2018-01-25T09:01:35.732Z</updated>
-    
-    <content type="html"><![CDATA[<hr><p>EOJ被我刷屏了。。。满屏的<code>Idleness Limit Exceeded</code>。。。直到ZZW给了答案才知道怎么写。</p><a id="more"></a><p>原题链接：<a href="http://acm.ecnu.edu.cn/problem/3342/" target="_blank" rel="external">经典的猜数游戏</a></p><p>代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span></div><div class="line"><span class="function"></span>&#123;</div><div class="line"><span class="keyword">int</span> low=<span class="number">-1e9</span>;</div><div class="line"><span class="keyword">int</span> up=<span class="number">1e9</span>;</div><div class="line"><span class="keyword">while</span>(<span class="number">1</span>)</div><div class="line">&#123;</div><div class="line"><span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line"><span class="built_in">cout</span>&lt;&lt;mid&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"><span class="comment">//printf("%d\n",mid);</span></div><div class="line"><span class="comment">//fflush(stdout);</span></div><div class="line"><span class="built_in">string</span> s;</div><div class="line"><span class="built_in">cin</span>&gt;&gt;s;</div><div class="line"><span class="keyword">if</span>(s==<span class="string">"equal"</span>) <span class="keyword">break</span>;</div><div class="line"><span class="keyword">if</span>(s==<span class="string">"small"</span>) low=mid+<span class="number">1</span>;</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">"big"</span>) up=mid<span class="number">-1</span>;</div><div class="line">&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>题目很简单，关键是你怎么清空缓存。</p><p>两种方法：</p><p>1.<code>cout&lt;&lt;endl</code>直接清空缓存。</p><p>2.如果你用了<code>printf</code>，那么后面就要加<code>fflush(stdout);</code>。</p><p>另附java代码:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">Scanner in = <span class="keyword">new</span> Scanner(System.in);</div><div class="line"><span class="keyword">int</span> low=-<span class="number">1000000000</span>;</div><div class="line"><span class="keyword">int</span> up=<span class="number">1000000000</span>;</div><div class="line">String s;</div><div class="line"><span class="keyword">do</span> &#123;</div><div class="line"><span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line">System.out.println(mid);</div><div class="line">System.out.flush();</div><div class="line">s=in.nextLine();</div><div class="line"><span class="keyword">switch</span>(s) &#123;</div><div class="line"><span class="keyword">case</span> <span class="string">"big"</span>:</div><div class="line">up=mid-<span class="number">1</span>;</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> <span class="string">"small"</span>:</div><div class="line">low=mid+<span class="number">1</span>;</div><div class="line"><span class="keyword">break</span>;</div><div class="line"><span class="keyword">case</span> <span class="string">"equal"</span>:</div><div class="line"><span class="keyword">break</span>;</div><div class="line">&#125;</div><div class="line">&#125; <span class="keyword">while</span>(!s.equals(<span class="string">"equal"</span>));</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>注意用法:<code>System.out.flush();</code></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;p&gt;EOJ被我刷屏了。。。满屏的&lt;code&gt;Idleness Limit Exceeded&lt;/code&gt;。。。直到ZZW给了答案才知道怎么写。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="c++" scheme="https://luxuantao.github.io/categories/c/"/>
-    
-    
-      <category term="OJ" scheme="https://luxuantao.github.io/tags/OJ/"/>
     
   </entry>
   
