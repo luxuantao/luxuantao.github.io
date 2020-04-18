@@ -100,7 +100,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="pytorch," />
 
 
 
@@ -118,16 +118,18 @@
 
 
 
-<meta name="description" content="一只等待进化为程序猿的猴子">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Welcome to Luson&#39;s home">
-<meta property="og:url" content="https://luxuantao.github.io/archives/2019/index.html">
+<meta name="description" content="在pytorch中像keras一样打印出神经网络各层的信息。">
+<meta name="keywords" content="pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;pytorch打印各层信息&#39;">
+<meta property="og:url" content="https://luxuantao.github.io/2020/04/18/pytorch打印各层信息/index.html">
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
-<meta property="og:description" content="一只等待进化为程序猿的猴子">
+<meta property="og:description" content="在pytorch中像keras一样打印出神经网络各层的信息。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-04-18T06:04:14.884Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome to Luson&#39;s home">
-<meta name="twitter:description" content="一只等待进化为程序猿的猴子">
+<meta name="twitter:title" content="&#39;pytorch打印各层信息&#39;">
+<meta name="twitter:description" content="在pytorch中像keras一样打印出神经网络各层的信息。">
 
 
 
@@ -156,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="https://luxuantao.github.io/archives/2019/"/>
+  <link rel="canonical" href="https://luxuantao.github.io/2020/04/18/pytorch打印各层信息/"/>
 
 
 
 
 
-  <title>归档 | Welcome to Luson's home</title>
+  <title>'pytorch打印各层信息' | Welcome to Luson's home</title>
   
 
 
@@ -181,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left  page-archive  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 	 <a href="https://github.com/luxuantao">
 	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
@@ -278,295 +280,244 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 34 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2020/04/18/pytorch打印各层信息/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陆轩韬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Luson's home">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">'pytorch打印各层信息'</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-18T13:59:34+08:00">
+                2020-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/12/06/字节跳动实习有感/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">字节跳动实习有感</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-12-06T20:34:08+08:00"
-              content="2019-12-06" >
-          12-06
-        </time>
-      </div>
+                
+                
+              
+            </span>
+          
 
-    </header>
-  </article>
+          
+            
+          
 
+          
+          
+             <span id="/2020/04/18/pytorch打印各层信息/" class="leancloud_visitors" data-flag-title="'pytorch打印各层信息'">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃&nbsp; | &nbsp;</span>
+             </span>
+          
 
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  211 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  1 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/08/pytorch-cuda初体验/" itemprop="url">
-              
-                <span itemprop="name">pytorch+cuda初体验</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-08T14:10:30+08:00"
-              content="2019-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/07/推免!推免!推免!/" itemprop="url">
-              
-                <span itemprop="name">推免!推免!推免!</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-09-07T20:38:47+08:00"
-              content="2019-09-07" >
-          09-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>在pytorch中像keras一样打印出神经网络各层的信息。</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="keyword">import</span> torch</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">paras_summary</span><span class="params">(input_size, model)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">register_hook</span><span class="params">(module)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">hook</span><span class="params">(module, input, output)</span>:</span></div><div class="line">            class_name = str(module.__class__).split(<span class="string">'.'</span>)[<span class="number">-1</span>].split(<span class="string">"'"</span>)[<span class="number">0</span>]</div><div class="line">            module_idx = len(summary)</div><div class="line"></div><div class="line">            m_key = <span class="string">'%s-%i'</span> % (class_name, module_idx+<span class="number">1</span>)</div><div class="line">            summary[m_key] = collections.OrderedDict()</div><div class="line">            summary[m_key][<span class="string">'input_shape'</span>] = list(input[<span class="number">0</span>].size())</div><div class="line">            summary[m_key][<span class="string">'input_shape'</span>][<span class="number">0</span>] = <span class="number">-1</span></div><div class="line">            summary[m_key][<span class="string">'output_shape'</span>] = list(output.size())</div><div class="line">            summary[m_key][<span class="string">'output_shape'</span>][<span class="number">0</span>] = <span class="number">-1</span></div><div class="line"></div><div class="line">            params = <span class="number">0</span></div><div class="line">            <span class="keyword">if</span> hasattr(module, <span class="string">'weight'</span>):</div><div class="line">                params += torch.prod(torch.LongTensor(list(module.weight.size())))</div><div class="line">                <span class="keyword">if</span> module.weight.requires_grad:</div><div class="line">                    summary[m_key][<span class="string">'trainable'</span>] = <span class="keyword">True</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    summary[m_key][<span class="string">'trainable'</span>] = <span class="keyword">False</span></div><div class="line">            <span class="keyword">if</span> hasattr(module, <span class="string">'bias'</span>):</div><div class="line">                params +=  torch.prod(torch.LongTensor(list(module.bias.size())))</div><div class="line">            summary[m_key][<span class="string">'nb_params'</span>] = params</div><div class="line"></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(module, nn.Sequential) <span class="keyword">and</span> \</div><div class="line">           <span class="keyword">not</span> isinstance(module, nn.ModuleList) <span class="keyword">and</span> \</div><div class="line">           <span class="keyword">not</span> (module == model):</div><div class="line">            hooks.append(module.register_forward_hook(hook))</div><div class="line"></div><div class="line">    <span class="comment"># check if there are multiple inputs to the network</span></div><div class="line">    <span class="keyword">if</span> isinstance(input_size[<span class="number">0</span>], (list, tuple)):</div><div class="line">        x = [torch.rand(<span class="number">1</span>,*in_size) <span class="keyword">for</span> in_size <span class="keyword">in</span> input_size]</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        x = torch.rand(<span class="number">1</span>,*input_size)</div><div class="line"></div><div class="line">    <span class="comment"># create properties</span></div><div class="line">    summary = collections.OrderedDict()</div><div class="line">    hooks = []</div><div class="line">    <span class="comment"># register hook</span></div><div class="line">    model.apply(register_hook)</div><div class="line">    <span class="comment"># make a forward pass</span></div><div class="line">    model(x)</div><div class="line">    <span class="comment"># remove these hooks</span></div><div class="line">    <span class="keyword">for</span> h <span class="keyword">in</span> hooks:</div><div class="line">        h.remove()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> summary</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">net = Net()</div><div class="line">input_size=[<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>]</div><div class="line">paras_summary(input_size,net)</div></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/28/Android-红外遥控/" itemprop="url">
-              
-                <span itemprop="name">Android 红外遥控</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-06-28T11:59:46+08:00"
-              content="2019-06-28" >
-          06-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/09/春招面试心路/" itemprop="url">
-              
-                <span itemprop="name">春招面试心路</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-05-09T18:01:26+08:00"
-              content="2019-05-09" >
-          05-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/28/C-查缺补漏/" itemprop="url">
-              
-                <span itemprop="name">C++查缺补漏</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-28T19:33:29+08:00"
-              content="2019-03-28" >
-          03-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/24/JetsonTX2自主无人车原型开发/" itemprop="url">
-              
-                <span itemprop="name">JetsonTX2自主无人车原型开发</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-24T16:46:26+08:00"
-              content="2019-01-24" >
-          01-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>donate the author</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="陆轩韬 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="陆轩韬 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pytorch/" rel="tag"><i class="fa fa-tag"></i> pytorch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/06/字节跳动实习有感/" rel="next" title="字节跳动实习有感">
+                <i class="fa fa-chevron-left"></i> 字节跳动实习有感
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -574,6 +525,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
 
         </div>
         
@@ -843,11 +800,9 @@
 
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   
@@ -877,6 +832,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
