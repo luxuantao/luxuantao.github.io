@@ -100,7 +100,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="pytorch," />
+  <meta name="keywords" content="pyecharts," />
 
 
 
@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="之前只在NVIDIA JETSON TX2上用过CUDA，由于本学期选了并行计算这门课，应该会用到一点CUDA；于此同时，最近又在研究pytorch，还没有试过在GPU上跑pytorch；并且我一查，自己的显卡是英伟达的且支持CUDA。所以就毅然决定去试一试。">
-<meta name="keywords" content="pytorch">
+<meta name="description" content="pyecharts中的常用可视化工具。">
+<meta name="keywords" content="pyecharts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pytorch+cuda初体验">
-<meta property="og:url" content="https://luxuantao.github.io/2019/09/08/pytorch-cuda初体验/index.html">
+<meta property="og:title" content="pyecharts可视化">
+<meta property="og:url" content="https://luxuantao.github.io/2020/04/20/pyecharts可视化/index.html">
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
-<meta property="og:description" content="之前只在NVIDIA JETSON TX2上用过CUDA，由于本学期选了并行计算这门课，应该会用到一点CUDA；于此同时，最近又在研究pytorch，还没有试过在GPU上跑pytorch；并且我一查，自己的显卡是英伟达的且支持CUDA。所以就毅然决定去试一试。">
+<meta property="og:description" content="pyecharts中的常用可视化工具。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-08T06:48:34.118Z">
+<meta property="og:updated_time" content="2020-04-20T14:34:21.436Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="pytorch+cuda初体验">
-<meta name="twitter:description" content="之前只在NVIDIA JETSON TX2上用过CUDA，由于本学期选了并行计算这门课，应该会用到一点CUDA；于此同时，最近又在研究pytorch，还没有试过在GPU上跑pytorch；并且我一查，自己的显卡是英伟达的且支持CUDA。所以就毅然决定去试一试。">
+<meta name="twitter:title" content="pyecharts可视化">
+<meta name="twitter:description" content="pyecharts中的常用可视化工具。">
 
 
 
@@ -158,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="https://luxuantao.github.io/2019/09/08/pytorch-cuda初体验/"/>
+  <link rel="canonical" href="https://luxuantao.github.io/2020/04/20/pyecharts可视化/"/>
 
 
 
 
 
-  <title>pytorch+cuda初体验 | Welcome to Luson's home</title>
+  <title>pyecharts可视化 | Welcome to Luson's home</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2019/09/08/pytorch-cuda初体验/">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2020/04/20/pyecharts可视化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陆轩韬">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">pytorch+cuda初体验</h1>
+          <h1 class="post-title" itemprop="name headline">pyecharts可视化</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-08T14:10:30+08:00">
-                2019-09-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-20T22:32:12+08:00">
+                2020-04-20
               </time>
             
 
@@ -363,7 +363,7 @@
 
           
           
-             <span id="/2019/09/08/pytorch-cuda初体验/" class="leancloud_visitors" data-flag-title="pytorch+cuda初体验">
+             <span id="/2020/04/20/pyecharts可视化/" class="leancloud_visitors" data-flag-title="pyecharts可视化">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  719 字
+                  539 字
                 </span>
               
 
@@ -426,22 +426,10 @@
       
 
       
-        <p>之前只在<code>NVIDIA JETSON TX2</code>上用过<code>CUDA</code>，由于本学期选了并行计算这门课，应该会用到一点<code>CUDA</code>；于此同时，最近又在研究<code>pytorch</code>，还没有试过在<code>GPU</code>上跑<code>pytorch</code>；并且我一查，自己的显卡是英伟达的且支持<code>CUDA</code>。所以就毅然决定去试一试。</p>
+        <p>pyecharts中的常用可视化工具。</p>
 <a id="more"></a>
-<h2 id="查看自己的显卡是否支持CUDA"><a href="#查看自己的显卡是否支持CUDA" class="headerlink" title="查看自己的显卡是否支持CUDA"></a>查看自己的显卡是否支持CUDA</h2><p>首先你要看自己的显卡是不是英伟达的，如果是<code>AMD</code>的就已经没戏了，后面的文章你就别看了。</p>
-<p>确定是英伟达的显卡后，上这个网查一查自己的显卡是否支持CUDA：<a href="https://developer.nvidia.com/cuda-gpus" target="_blank" rel="external">https://developer.nvidia.com/cuda-gpus</a></p>
-<p>网站里也清楚地标注了不同型号的算力，我的显卡是<code>Quadro K620</code>，这是一款专业级显卡，画图建模很不错，但是用来打游戏就不咋地了（打游戏请用<code>Geforce</code>系列），算力5.0，算是刚刚及格吧。<code>Jetson TX1</code>的算力为5.3，<code>TX2</code>为6.2，最新的<code>AGX Xavier</code>算力为7.2，毕竟一分价钱一分货。</p>
-<h2 id="安装CUDA"><a href="#安装CUDA" class="headerlink" title="安装CUDA"></a>安装CUDA</h2><p>上这个网址下载CUDA：<a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">https://developer.nvidia.com/cuda-downloads</a></p>
-<p>选择自己操作系统的版本，<code>Installer Type</code>我选的是<code>local</code>，然后就是无脑装，所有的配件我都勾选了（默认），当然你也可以按需选取。安装过程中屏幕会有闪动，这是正常现象。</p>
-<p>装好后，去<code>CMD</code>输入<code>nvcc -V</code>看一下版本号，我下的最新版为<code>Cuda compilation tools, release 10.1, V10.1.243</code>，如果显示找不到命令，去配一下环境变量 。</p>
-<h2 id="安装pytorch"><a href="#安装pytorch" class="headerlink" title="安装pytorch"></a>安装pytorch</h2><p>上这个网址下载pytorch：<a href="https://pytorch.org/" target="_blank" rel="external">https://pytorch.org</a>，选择相应的版本，得到下载命令。</p>
-<p>我的下载命令为：<code>conda install pytorch torchvision cudatoolkit=10.0 -c pytorch</code></p>
-<p>下载过程中可能会碰到各种<code>anaconda</code>给你报的奇奇怪怪的问题，更新这个，下载那个，照做就是了。</p>
-<h2 id="对比CPU和GPU的性能差距"><a href="#对比CPU和GPU的性能差距" class="headerlink" title="对比CPU和GPU的性能差距"></a>对比CPU和GPU的性能差距</h2><p>装好后检验一下效果，用<code>pytorch</code>分别在CPU和GPU上做一个矩阵乘法，算一下用时：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line">print(torch.__version__)</div><div class="line">print(torch.cuda.is_available())  <span class="comment"># 得返回true，否则你再看看上文哪儿出了问题</span></div><div class="line"></div><div class="line">a = torch.randn(<span class="number">10000</span>, <span class="number">1000</span>)</div><div class="line">b = torch.randn(<span class="number">1000</span>, <span class="number">2000</span>)</div><div class="line"></div><div class="line">t0 = time.time()</div><div class="line">c = torch.matmul(a, b)</div><div class="line">t1 = time.time()</div><div class="line">print(a.device, t1 - t0, c.norm(<span class="number">2</span>))</div><div class="line"></div><div class="line">device = torch.device(<span class="string">'cuda'</span>)</div><div class="line">a = a.to(device)</div><div class="line">b = b.to(device)</div><div class="line"></div><div class="line">t0 = time.time()</div><div class="line">c = torch.matmul(a, b)</div><div class="line">t2 = time.time()</div><div class="line">print(a.device, t2 - t0, c.norm(<span class="number">2</span>))</div><div class="line"></div><div class="line">t0 = time.time()</div><div class="line">c = torch.matmul(a, b)</div><div class="line">t2 = time.time()</div><div class="line">print(a.device, t2 - t0, c.norm(<span class="number">2</span>))</div></pre></td></tr></table></figure>
-<p>我的运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1.2.0</div><div class="line">True</div><div class="line">cpu 0.2418828010559082 tensor(141039.7031)</div><div class="line">cuda:0 0.30884218215942383 tensor(141441.1094, device=&apos;cuda:0&apos;)</div><div class="line">cuda:0 0.0069959163665771484 tensor(141441.1094, device=&apos;cuda:0&apos;)</div></pre></td></tr></table></figure>
-<p>你会发现我在GPU上特地跑了两次，而且第一次时间甚至比CPU还久，那是因为第一次GPU需要做一些部署的工作，时间自然会长一些，第二次运行时间就明显比 CPU短很多了。</p>
+<p><a href="http://pyecharts.org/#/zh-cn/" target="_blank" rel="external">http://pyecharts.org/#/zh-cn/</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> pyecharts <span class="keyword">import</span> options <span class="keyword">as</span> opts</div><div class="line"><span class="keyword">from</span> pyecharts.faker <span class="keyword">import</span> Faker</div><div class="line"><span class="keyword">from</span> pyecharts.charts <span class="keyword">import</span> Bar, Bar3D, Line, Pie, EffectScatter, Funnel, Geo, Liquid, Radar, WordCloud</div><div class="line"><span class="keyword">from</span> pyecharts.globals <span class="keyword">import</span> ThemeType, SymbolType</div><div class="line"><span class="keyword">import</span> random</div><div class="line"></div><div class="line"></div><div class="line">bar = Bar(</div><div class="line">	init_opts=opts.InitOpts(</div><div class="line">		theme=ThemeType.PURPLE_PASSION,</div><div class="line">		width=<span class="string">'720px'</span>,</div><div class="line">		height=<span class="string">'540px'</span>))</div><div class="line"></div><div class="line">bar.add_xaxis(Faker.choose())</div><div class="line">bar.add_yaxis(<span class="string">'商家'</span>, Faker.values())</div><div class="line"></div><div class="line"><span class="comment"># bar.add_yaxis('商家1', Faker.values(), stack='stack1')</span></div><div class="line"><span class="comment"># bar.add_yaxis('商家2', Faker.values(), stack='stack1')</span></div><div class="line"><span class="comment"># bar.add_yaxis('商家3', Faker.values(), stack='stack2')</span></div><div class="line"><span class="comment"># bar.add_yaxis('商家4', Faker.values(), stack='stack2')</span></div><div class="line"></div><div class="line">bar.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'Bar1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span>),</div><div class="line">	datazoom_opts=[opts.DataZoomOpts()],</div><div class="line">	xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=<span class="number">30</span>)))</div><div class="line"></div><div class="line">bar.set_series_opts(</div><div class="line">	label_opts=opts.LabelOpts(is_show=<span class="keyword">False</span>),</div><div class="line">	markpoint_opts=opts.MarkPointOpts(</div><div class="line">		data=[</div><div class="line">			opts.MarkPointItem(type_=<span class="string">'max'</span>, name=<span class="string">'最大值'</span>),</div><div class="line">			opts.MarkPointItem(type_=<span class="string">'min'</span>, name=<span class="string">'最小值'</span>)</div><div class="line">		]</div><div class="line">	),</div><div class="line">	markline_opts=opts.MarkPointOpts(</div><div class="line">		data=[</div><div class="line">			opts.MarkLineItem(type_=<span class="string">'average'</span>, name=<span class="string">'平均值'</span>)</div><div class="line">		]</div><div class="line">	)</div><div class="line">)</div><div class="line">bar.reversal_axis()</div><div class="line">bar.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">data = [(i, j, random.randint(<span class="number">0</span>, <span class="number">12</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">24</span>) <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">6</span>)]</div><div class="line">bar3d = Bar3D()</div><div class="line">bar3d.add(</div><div class="line">	<span class="string">""</span>,</div><div class="line">	data,</div><div class="line">	xaxis3d_opts=opts.Axis3DOpts(Faker.clock, type_=<span class="string">'category'</span>),</div><div class="line">	yaxis3d_opts=opts.Axis3DOpts(Faker.week_en, type_=<span class="string">'category'</span>),</div><div class="line">	zaxis3d_opts=opts.Axis3DOpts(Faker.week_en, type_=<span class="string">'value'</span>)</div><div class="line">)</div><div class="line">bar3d.set_global_opts(</div><div class="line">	visualmap_opts=opts.VisualMapOpts(max_=<span class="number">20</span>),</div><div class="line">	title_opts=opts.TitleOpts(title=<span class="string">'Bar3D'</span>)</div><div class="line">)</div><div class="line">bar3d.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">line = Line()</div><div class="line">line.add_xaxis(Faker.choose())</div><div class="line">line.add_yaxis(</div><div class="line">	<span class="string">'商家1'</span>, </div><div class="line">	Faker.values(), </div><div class="line">	is_smooth=<span class="keyword">True</span>,</div><div class="line">	areastyle_opts=opts.AreaStyleOpts(</div><div class="line">		opacity=<span class="number">0.2</span>,</div><div class="line">		color=&#123;</div><div class="line">			<span class="string">'type'</span>: <span class="string">'linear'</span>,</div><div class="line">			<span class="string">'x'</span>: <span class="number">0</span>,</div><div class="line">			<span class="string">'y'</span>: <span class="number">0</span>,</div><div class="line">			<span class="string">'x2'</span>: <span class="number">0</span>,</div><div class="line">			<span class="string">'x2'</span>: <span class="number">1</span>,</div><div class="line">			<span class="string">'colorStops'</span>: [&#123;</div><div class="line">				<span class="string">'offset'</span>: <span class="number">0</span>, <span class="string">'color'</span>: <span class="string">'red'</span></div><div class="line">			&#125;, &#123;</div><div class="line">				<span class="string">'offset'</span>: <span class="number">1</span>, <span class="string">'color'</span>: <span class="string">'blue'</span></div><div class="line">			&#125;]</div><div class="line">		&#125;</div><div class="line">	)</div><div class="line">)</div><div class="line">line.add_yaxis(<span class="string">'商家2'</span>, Faker.values())</div><div class="line">line.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'line1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line">line.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">pie = Pie()</div><div class="line">pie.add(<span class="string">""</span>,</div><div class="line">	[list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(Faker.choose(), Faker.values())],</div><div class="line">	radius=[<span class="string">'40%'</span>, <span class="string">'75%'</span>],</div><div class="line">	rosetype=<span class="string">"area"</span>)</div><div class="line">pie.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'Pie1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">pie.set_series_opts(</div><div class="line">	label_opts=opts.LabelOpts(formatter=<span class="string">'&#123;b&#125;:&#123;c&#125;'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">pie.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">effect_scatter = EffectScatter()</div><div class="line">effect_scatter.add_xaxis(Faker.choose())</div><div class="line">effect_scatter.add_yaxis(</div><div class="line">	<span class="string">''</span>,</div><div class="line">	Faker.values(),</div><div class="line">	symbol=SymbolType.ARROW)</div><div class="line"></div><div class="line">effect_scatter.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'effect_scatter2'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line"></div><div class="line">effect_scatter.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">funnel = Funnel()</div><div class="line">funnel.add(</div><div class="line">	<span class="string">'用户转化率'</span>,</div><div class="line">	[list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(Faker.choose(), Faker.values())],</div><div class="line">	label_opts=opts.LabelOpts(position=<span class="string">'inside'</span>))</div><div class="line"></div><div class="line">funnel.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'funnel1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line"></div><div class="line">funnel.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">geo = Geo()</div><div class="line">geo.add_schema(maptype=<span class="string">'china'</span>)</div><div class="line">geo.add(<span class="string">'geo'</span>, [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(Faker.provinces, Faker.values())])</div><div class="line">geo.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="keyword">False</span>))</div><div class="line"></div><div class="line">geo.set_global_opts(</div><div class="line">	visualmap_opts=opts.VisualMapOpts(),</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'funnel1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line"></div><div class="line">geo.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">liquid = Liquid()</div><div class="line">liquid.add(<span class="string">'liquid'</span>, [<span class="number">0.7</span>, <span class="number">0.6</span>, <span class="number">0.5</span>])</div><div class="line">liquid.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'funnel1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line">liquid.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">radar = Radar()</div><div class="line">radar.add_schema(</div><div class="line">	schema=[</div><div class="line">		opts.RadarIndicatorItem(name=<span class="string">'a'</span>, max_=<span class="number">6500</span>),</div><div class="line">		opts.RadarIndicatorItem(name=<span class="string">'b'</span>, max_=<span class="number">5500</span>),</div><div class="line">		opts.RadarIndicatorItem(name=<span class="string">'c'</span>, max_=<span class="number">4500</span>),</div><div class="line">		opts.RadarIndicatorItem(name=<span class="string">'d'</span>, max_=<span class="number">3500</span>),</div><div class="line">	]</div><div class="line">)</div><div class="line"><span class="comment"># radar.add('G', v1)</span></div><div class="line"><span class="comment"># radar.add('H', v)</span></div><div class="line">radar.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="keyword">False</span>))</div><div class="line">radar.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'funnel1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line">radar.render()</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">words = [</div><div class="line">	(<span class="string">'aaaaaaa'</span>, <span class="number">10000</span>),</div><div class="line">	(<span class="string">'bbbb'</span>, <span class="number">20000</span>),</div><div class="line">	(<span class="string">'ccc'</span>, <span class="number">30000</span>)</div><div class="line">]</div><div class="line">wordcloud = WordCloud()</div><div class="line">wordcloud.add(<span class="string">''</span>, words, word_size_range=[<span class="number">20</span>, <span class="number">100</span>])</div><div class="line">wordcloud.set_global_opts(</div><div class="line">	title_opts=opts.TitleOpts(</div><div class="line">		title=<span class="string">'funnel1'</span>,</div><div class="line">		subtitle=<span class="string">'副标题'</span></div><div class="line">	)</div><div class="line">)</div><div class="line">wordcloud.render()</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -488,7 +476,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pytorch/" rel="tag"><i class="fa fa-tag"></i> pytorch</a>
+            <a href="/tags/pyecharts/" rel="tag"><i class="fa fa-tag"></i> pyecharts</a>
           
         </div>
       
@@ -501,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/07/推免!推免!推免!/" rel="next" title="推免!推免!推免!">
-                <i class="fa fa-chevron-left"></i> 推免!推免!推免!
+              <a href="/2020/04/18/pytorch打印各层信息/" rel="next" title="pytorch打印各层信息">
+                <i class="fa fa-chevron-left"></i> pytorch打印各层信息
               </a>
             
           </div>
@@ -510,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/06/字节跳动实习有感/" rel="prev" title="字节跳动实习有感">
-                字节跳动实习有感 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,17 +551,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -678,22 +653,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查看自己的显卡是否支持CUDA"><span class="nav-number">1.</span> <span class="nav-text">查看自己的显卡是否支持CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装CUDA"><span class="nav-number">2.</span> <span class="nav-text">安装CUDA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装pytorch"><span class="nav-number">3.</span> <span class="nav-text">安装pytorch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比CPU和GPU的性能差距"><span class="nav-number">4.</span> <span class="nav-text">对比CPU和GPU的性能差距</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
