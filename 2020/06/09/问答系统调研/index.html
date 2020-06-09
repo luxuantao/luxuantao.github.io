@@ -126,7 +126,7 @@
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
 <meta property="og:description" content="在完成毕业论文（设计）期间的调研工作，主要研究了几个经典的问答系统和机器阅读理解模型。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-06-09T09:03:42.432Z">
+<meta property="og:updated_time" content="2020-06-09T09:07:01.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="问答系统调研">
 <meta name="twitter:description" content="在完成毕业论文（设计）期间的调研工作，主要研究了几个经典的问答系统和机器阅读理解模型。">
@@ -437,8 +437,7 @@
 <li>对每个单词对应的特征向量与问题的特征向量进行Attention操作，这里用的是双线性函数$\alpha_{i}=softmax(q^TW_s\widetilde{p}_i)$），表示答案开头在各个位置的可能性大小；同样的公式，把矩阵 $W_s$ 换成了另一个矩阵 $W_e$ ，再算一个$\widetilde{a}_i$，表示答案结尾在各个位置的可能性大小</li>
 <li>损失函数$L=-\sum{logP^{start}(a<em>{start})}-\sum{logP^{end}(a</em>{end})}$ ，其实这里开始就会有不同的版本，这里是按照CS224n课程中的理解</li>
 </ol>
-<p>#DrQA</p>
-<p>出自论文：<a href="https://arxiv.org/abs/1704.00051" target="_blank" rel="external">Reading Wikipedia to Answer Open-Domain Questions</a></p>
+<h1 id="DrQA"><a href="#DrQA" class="headerlink" title="DrQA"></a>DrQA</h1><p>出自论文：<a href="https://arxiv.org/abs/1704.00051" target="_blank" rel="external">Reading Wikipedia to Answer Open-Domain Questions</a></p>
 <p>解决的问题：开放域问答，不需要预先给出段落</p>
 <p>思路：</p>
 <p>模型包含两个部分，分别是<strong>Document Retriever</strong>和<strong>Document Reader</strong>，分别用于从广大的数据来源中提取与问题相关的文章，根据提取的文章找到问题的答案，完成阅读理解工作</p>
@@ -493,8 +492,7 @@
 <li>双层双向的LSTM。第一层双向的LSTM过后，得到矩阵M1，维度为 $2d<em>T$ ，第二层双向的LSTM过后，得到矩阵M2，,维度也为 $2d</em>T$</li>
 <li>可以预测答案的开始位置和结束位置了，$p1=softmax(w^T<em>{p1}[G;M1])$ ，$p2=softmax(w^T</em>{p2}[G;M2])$， w维度都是$1<em>10d$ ，p纬度都是$1</em>T$ ，预测的时候取T个值中最大的那个；训练的时候损失函数为$L(\theta)=-\frac{1}{N}\sum\limits<em>i^N{[log(p</em>{y1})+log(p_{y2})]}$ ，其中$y1$ 和$y2$ 表示正确答案</li>
 </ol>
-<p>#GoldEn Retriever</p>
-<p>出自论文：<a href="https://nlp.stanford.edu/pubs/qi2019answering.pdf" target="_blank" rel="external">Answering Complex Open-domain Questions Through Iterative Query Generation</a></p>
+<h1 id="GoldEn-Retriever"><a href="#GoldEn-Retriever" class="headerlink" title="GoldEn Retriever"></a>GoldEn Retriever</h1><p>出自论文：<a href="https://nlp.stanford.edu/pubs/qi2019answering.pdf" target="_blank" rel="external">Answering Complex Open-domain Questions Through Iterative Query Generation</a></p>
 <p>解决的问题：开放域问答，不需要预先给出段落，问题需要系统进行多步推理才能给出正确答案</p>
 <p>思路：</p>
 <p>该模型的核心创新之处在于，它在每一步都使用先前的IR结果来生成新的自然语言查询，并检索新的证据来回答原始问题，而不是单纯依靠原始问题来检索文章段落，从而实现多跳推理。</p>
@@ -744,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stanford-Attentive-Reader"><span class="nav-number">1.</span> <span class="nav-text">Stanford Attentive Reader</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BiDAF"><span class="nav-number">2.</span> <span class="nav-text">BiDAF</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stanford-Attentive-Reader"><span class="nav-number">1.</span> <span class="nav-text">Stanford Attentive Reader</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DrQA"><span class="nav-number">2.</span> <span class="nav-text">DrQA</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BiDAF"><span class="nav-number">3.</span> <span class="nav-text">BiDAF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GoldEn-Retriever"><span class="nav-number">4.</span> <span class="nav-text">GoldEn Retriever</span></a></li></ol></div>
             
 
           </div>
