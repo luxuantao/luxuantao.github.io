@@ -100,7 +100,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="OJ," />
+  <meta name="keywords" content="强化学习,tensorflow2," />
 
 
 
@@ -118,18 +118,18 @@
 
 
 
-<meta name="description" content="EOJ被我刷屏了。。。满屏的Idleness Limit Exceeded。。。直到ZZW给了答案才知道怎么写。">
-<meta name="keywords" content="OJ">
+<meta name="description" content="我一直觉得强化学习是走向强人工智能的一个必经过程，现有的许多问答系统中也时常会出现强化学习的身影。本文使用策略网络玩强化学习入门的平衡杆游戏。">
+<meta name="keywords" content="强化学习,tensorflow2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一道交互题">
-<meta property="og:url" content="https://luxuantao.github.io/2017/09/15/第一道交互题/index.html">
+<meta property="og:title" content="强化学习-策略网络">
+<meta property="og:url" content="https://luxuantao.github.io/2020/07/15/强化学习-策略网络/index.html">
 <meta property="og:site_name" content="Welcome to Luson&#39;s home">
-<meta property="og:description" content="EOJ被我刷屏了。。。满屏的Idleness Limit Exceeded。。。直到ZZW给了答案才知道怎么写。">
+<meta property="og:description" content="我一直觉得强化学习是走向强人工智能的一个必经过程，现有的许多问答系统中也时常会出现强化学习的身影。本文使用策略网络玩强化学习入门的平衡杆游戏。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-25T09:01:35.732Z">
+<meta property="og:updated_time" content="2020-07-15T13:40:06.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="第一道交互题">
-<meta name="twitter:description" content="EOJ被我刷屏了。。。满屏的Idleness Limit Exceeded。。。直到ZZW给了答案才知道怎么写。">
+<meta name="twitter:title" content="强化学习-策略网络">
+<meta name="twitter:description" content="我一直觉得强化学习是走向强人工智能的一个必经过程，现有的许多问答系统中也时常会出现强化学习的身影。本文使用策略网络玩强化学习入门的平衡杆游戏。">
 
 
 
@@ -158,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="https://luxuantao.github.io/2017/09/15/第一道交互题/"/>
+  <link rel="canonical" href="https://luxuantao.github.io/2020/07/15/强化学习-策略网络/"/>
 
 
 
 
 
-  <title>第一道交互题 | Welcome to Luson's home</title>
+  <title>强化学习-策略网络 | Welcome to Luson's home</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2017/09/15/第一道交互题/">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2020/07/15/强化学习-策略网络/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="陆轩韬">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">第一道交互题</h1>
+          <h1 class="post-title" itemprop="name headline">强化学习-策略网络</h1>
         
 
         <div class="post-meta">
@@ -323,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T18:05:22+08:00">
-                2017-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T21:30:46+08:00">
+                2020-07-15
               </time>
             
 
@@ -346,8 +346,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/c/" itemprop="url" rel="index">
-                    <span itemprop="name">c++</span>
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
                   </a>
                 </span>
 
@@ -363,7 +363,7 @@
 
           
           
-             <span id="/2017/09/15/第一道交互题/" class="leancloud_visitors" data-flag-title="第一道交互题">
+             <span id="/2020/07/15/强化学习-策略网络/" class="leancloud_visitors" data-flag-title="强化学习-策略网络">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  220 字
+                  824 字
                 </span>
               
 
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1 分钟
+                  4 分钟
                 </span>
               
             </div>
@@ -426,19 +426,12 @@
       
 
       
-        <hr>
-<p>EOJ被我刷屏了。。。满屏的<code>Idleness Limit Exceeded</code>。。。直到ZZW给了答案才知道怎么写。</p>
+        <p>我一直觉得强化学习是走向强人工智能的一个必经过程，现有的许多问答系统中也时常会出现强化学习的身影。本文使用策略网络玩强化学习入门的平衡杆游戏。</p>
 <a id="more"></a>
-<p>原题链接：<a href="http://acm.ecnu.edu.cn/problem/3342/" target="_blank" rel="external">经典的猜数游戏</a></p>
-<p>代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> * argv[])</span> </span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">	<span class="keyword">int</span> low=<span class="number">-1e9</span>;</div><div class="line">	<span class="keyword">int</span> up=<span class="number">1e9</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="number">1</span>)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="built_in">cout</span>&lt;&lt;mid&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">		<span class="comment">//printf("%d\n",mid);</span></div><div class="line">		<span class="comment">//fflush(stdout);</span></div><div class="line">		<span class="built_in">string</span> s;</div><div class="line">		<span class="built_in">cin</span>&gt;&gt;s;</div><div class="line">		<span class="keyword">if</span>(s==<span class="string">"equal"</span>) <span class="keyword">break</span>;</div><div class="line">		<span class="keyword">if</span>(s==<span class="string">"small"</span>) low=mid+<span class="number">1</span>;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(s==<span class="string">"big"</span>) up=mid<span class="number">-1</span>;</div><div class="line">	&#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>题目很简单，关键是你怎么清空缓存。</p>
-<p>两种方法：</p>
-<p>1.<code>cout&lt;&lt;endl</code>直接清空缓存。</p>
-<p>2.如果你用了<code>printf</code>，那么后面就要加<code>fflush(stdout);</code>。</p>
-<p>另附java代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</div><div class="line">		<span class="keyword">int</span> low=-<span class="number">1000000000</span>;</div><div class="line">		<span class="keyword">int</span> up=<span class="number">1000000000</span>;</div><div class="line">		String s;</div><div class="line">		<span class="keyword">do</span> &#123;</div><div class="line">			<span class="keyword">int</span> mid=(low+up)&gt;&gt;<span class="number">1</span>;</div><div class="line">			System.out.println(mid);</div><div class="line">			System.out.flush();			</div><div class="line">			s=in.nextLine();</div><div class="line">			<span class="keyword">switch</span>(s) &#123;</div><div class="line">				<span class="keyword">case</span> <span class="string">"big"</span>:</div><div class="line">					up=mid-<span class="number">1</span>;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				<span class="keyword">case</span> <span class="string">"small"</span>:</div><div class="line">					low=mid+<span class="number">1</span>;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				<span class="keyword">case</span> <span class="string">"equal"</span>:</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">while</span>(!s.equals(<span class="string">"equal"</span>));</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意用法:<code>System.out.flush();</code></p>
+<p>代码参考自龙良曲的tensorflow2开源书籍。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> 	gym,os</div><div class="line"><span class="keyword">import</span>  numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span>  matplotlib</div><div class="line"><span class="keyword">from</span> 	matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="comment"># Default parameters for plots</span></div><div class="line">matplotlib.rcParams[<span class="string">'font.size'</span>] = <span class="number">18</span></div><div class="line">matplotlib.rcParams[<span class="string">'figure.titlesize'</span>] = <span class="number">18</span></div><div class="line">matplotlib.rcParams[<span class="string">'figure.figsize'</span>] = [<span class="number">9</span>, <span class="number">7</span>]</div><div class="line">matplotlib.rcParams[<span class="string">'font.family'</span>] = [<span class="string">'KaiTi'</span>]</div><div class="line">matplotlib.rcParams[<span class="string">'axes.unicode_minus'</span>]=<span class="keyword">False</span> </div><div class="line"></div><div class="line"><span class="keyword">import</span> 	tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">from</span>    tensorflow <span class="keyword">import</span> keras</div><div class="line"><span class="keyword">from</span>    tensorflow.keras <span class="keyword">import</span> layers,optimizers,losses</div><div class="line"><span class="keyword">from</span>    PIL <span class="keyword">import</span> Image</div><div class="line">env = gym.make(<span class="string">'CartPole-v1'</span>)  <span class="comment"># 创建游戏环境</span></div><div class="line">env.seed(<span class="number">2333</span>)</div><div class="line">tf.random.set_seed(<span class="number">2333</span>)</div><div class="line">np.random.seed(<span class="number">2333</span>)</div><div class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>] = <span class="string">'2'</span></div><div class="line"><span class="keyword">assert</span> tf.__version__.startswith(<span class="string">'2.'</span>)</div><div class="line"></div><div class="line">learning_rate = <span class="number">0.0002</span></div><div class="line">gamma         = <span class="number">0.98</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Policy</span><span class="params">(keras.Model)</span>:</span></div><div class="line">    <span class="comment"># 策略网络，生成动作的概率分布</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super(Policy, self).__init__()</div><div class="line">        self.data = [] <span class="comment"># 存储轨迹</span></div><div class="line">        <span class="comment"># 输入为长度为4的向量，输出为左、右2个动作</span></div><div class="line">        self.fc1 = layers.Dense(<span class="number">128</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line">        self.fc2 = layers.Dense(<span class="number">2</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line">        <span class="comment"># 网络优化器</span></div><div class="line">        self.optimizer = optimizers.Adam(lr=learning_rate)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self, inputs, training=None)</span>:</span></div><div class="line">        <span class="comment"># 状态输入s的shape为向量：[4]</span></div><div class="line">        x = tf.nn.relu(self.fc1(inputs))</div><div class="line">        x = tf.nn.softmax(self.fc2(x), axis=<span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put_data</span><span class="params">(self, item)</span>:</span></div><div class="line">        <span class="comment"># 记录r,log_P(a|s)</span></div><div class="line">        self.data.append(item)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">train_net</span><span class="params">(self, tape)</span>:</span></div><div class="line">        <span class="comment"># 计算梯度并更新策略网络参数。tape为梯度记录器</span></div><div class="line">        R = <span class="number">0</span> <span class="comment"># 终结状态的初始回报为0</span></div><div class="line">        <span class="keyword">for</span> r, log_prob <span class="keyword">in</span> self.data[::<span class="number">-1</span>]:<span class="comment">#逆序取</span></div><div class="line">            R = r + gamma * R <span class="comment"># 计算每个时间戳上的回报</span></div><div class="line">            <span class="comment"># 每个时间戳都计算一次梯度</span></div><div class="line">            <span class="comment"># grad_R=-log_P*R*grad_theta</span></div><div class="line">            loss = -log_prob * R</div><div class="line">            <span class="keyword">with</span> tape.stop_recording():</div><div class="line">                <span class="comment"># 优化策略网络</span></div><div class="line">                grads = tape.gradient(loss, self.trainable_variables)</div><div class="line">                self.optimizer.apply_gradients(zip(grads, self.trainable_variables))</div><div class="line">        self.data = [] <span class="comment"># 清空轨迹</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    pi = Policy() <span class="comment"># 创建策略网络</span></div><div class="line">    pi(tf.random.normal((<span class="number">4</span>,<span class="number">4</span>)))</div><div class="line">    pi.summary()</div><div class="line">    score = <span class="number">0.0</span> <span class="comment"># 计分</span></div><div class="line">    print_interval = <span class="number">20</span> <span class="comment"># 打印间隔</span></div><div class="line">    returns = []</div><div class="line"></div><div class="line">    <span class="keyword">for</span> n_epi <span class="keyword">in</span> range(<span class="number">400</span>):</div><div class="line">        print(n_epi)</div><div class="line">        s = env.reset() <span class="comment"># 回到游戏初始状态，返回s0</span></div><div class="line">        <span class="keyword">with</span> tf.GradientTape(persistent=<span class="keyword">True</span>) <span class="keyword">as</span> tape:</div><div class="line">            <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">501</span>): <span class="comment"># CartPole-v1 forced to terminates at 500 step.</span></div><div class="line">                <span class="comment"># 送入状态向量，获取策略</span></div><div class="line">                s = tf.constant(s,dtype=tf.float32)</div><div class="line">                <span class="comment"># s: [4] =&gt; [1,4]</span></div><div class="line">                s = tf.expand_dims(s, axis=<span class="number">0</span>)</div><div class="line">                prob = pi(s) <span class="comment"># 动作分布:[1,2]</span></div><div class="line">                <span class="comment"># 从类别分布中采样1个动作, shape: [1]</span></div><div class="line">                a = tf.random.categorical(tf.math.log(prob), <span class="number">1</span>)[<span class="number">0</span>]</div><div class="line">                a = int(a) <span class="comment"># Tensor转数字</span></div><div class="line">                s_prime, r, done, info = env.step(a)</div><div class="line">                <span class="comment"># 记录动作a和动作产生的奖励r</span></div><div class="line">                <span class="comment"># prob shape:[1,2]</span></div><div class="line">                pi.put_data((r, tf.math.log(prob[<span class="number">0</span>][a])))</div><div class="line">                s = s_prime <span class="comment"># 刷新状态</span></div><div class="line">                score += r <span class="comment"># 累积奖励</span></div><div class="line"></div><div class="line">                env.render()</div><div class="line">                <span class="keyword">if</span> done:  <span class="comment"># 当前episode终止</span></div><div class="line">                    <span class="keyword">break</span></div><div class="line">            <span class="comment"># episode终止后，训练一次网络</span></div><div class="line">            pi.train_net(tape)</div><div class="line">        <span class="keyword">del</span> tape</div><div class="line"></div><div class="line">        <span class="keyword">if</span> n_epi%print_interval==<span class="number">0</span> <span class="keyword">and</span> n_epi!=<span class="number">0</span>:</div><div class="line">            returns.append(score/print_interval)</div><div class="line">            print(<span class="string">f"# of episode :<span class="subst">&#123;n_epi&#125;</span>, avg score : <span class="subst">&#123;score/print_interval&#125;</span>"</span>)</div><div class="line">            score = <span class="number">0.0</span></div><div class="line">    env.close() <span class="comment"># 关闭环境</span></div><div class="line"></div><div class="line">    plt.plot(np.arange(len(returns))*print_interval, returns)</div><div class="line">    plt.plot(np.arange(len(returns))*print_interval, returns, <span class="string">'s'</span>)</div><div class="line">    plt.xlabel(<span class="string">'回合数'</span>)</div><div class="line">    plt.ylabel(<span class="string">'总回报'</span>)</div><div class="line">    plt.savefig(<span class="string">'reinforce-tf-cartpole.svg'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>代码中唯一的trick是 <strong>因果性</strong> ，只考虑从某时间戳开始的累积回报，而不是总回报，所以代码中是逆序计算梯度的。代码中的策略网络使用两层全连接层实现的，其实可以换成任何其他形式。</p>
+<p>我一直认为朴素的策略网络梯度更新的思想其实十分简单直观：当回报是正的，就提高做过的动作的概率，反之就降低。当然这过于朴素了，所以才有了后面众多的改进措施。</p>
 
       
     </div>
@@ -485,7 +478,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/OJ/" rel="tag"><i class="fa fa-tag"></i> OJ</a>
+            <a href="/tags/强化学习/" rel="tag"><i class="fa fa-tag"></i> 强化学习</a>
+          
+            <a href="/tags/tensorflow2/" rel="tag"><i class="fa fa-tag"></i> tensorflow2</a>
           
         </div>
       
@@ -498,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/15/用归并排序求逆序对个数/" rel="next" title="用归并排序求逆序对个数">
-                <i class="fa fa-chevron-left"></i> 用归并排序求逆序对个数
+              <a href="/2020/07/15/爬取天气信息/" rel="next" title="爬取天气信息">
+                <i class="fa fa-chevron-left"></i> 爬取天气信息
               </a>
             
           </div>
@@ -507,10 +502,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/28/Arduino初体验/" rel="prev" title="Arduino初体验">
-                Arduino初体验 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
