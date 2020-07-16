@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #FFFFCC; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-center-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="强化学习,tensorflow2," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Welcome to Luson's home" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="仍旧是玩平衡杆游戏，不过这次用了更为强大的PPO2，看完之后不经感叹里面的思想真的是太奇妙了！相较于朴素的策略网络，多了好多新的trick，不敢想象发明这个算法的人是有多聪明。">
+<meta name="keywords" content="强化学习,tensorflow2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="强化学习-PPO2">
+<meta property="og:url" content="https://luxuantao.github.io/2020/07/16/强化学习-PPO2/index.html">
+<meta property="og:site_name" content="Welcome to Luson&#39;s home">
+<meta property="og:description" content="仍旧是玩平衡杆游戏，不过这次用了更为强大的PPO2，看完之后不经感叹里面的思想真的是太奇妙了！相较于朴素的策略网络，多了好多新的trick，不敢想象发明这个算法的人是有多聪明。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-07-16T09:53:53.581Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="强化学习-PPO2">
+<meta name="twitter:description" content="仍旧是玩平衡杆游戏，不过这次用了更为强大的PPO2，看完之后不经感叹里面的思想真的是太奇妙了！相较于朴素的策略网络，多了好多新的trick，不敢想象发明这个算法的人是有多聪明。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luxuantao.github.io/2020/07/16/强化学习-PPO2/"/>
+
+
+
+
+
+  <title>强化学习-PPO2 | Welcome to Luson's home</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+	 <a href="https://github.com/luxuantao">
+	   <img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png">
+	 </a>
+	 
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Welcome to Luson's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">就怕你宁愿流泪望天却不昂首向前</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://luxuantao.github.io/2020/07/16/强化学习-PPO2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="陆轩韬">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to Luson's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">强化学习-PPO2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-16T14:43:29+08:00">
+                2020-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/07/16/强化学习-PPO2/" class="leancloud_visitors" data-flag-title="强化学习-PPO2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃&nbsp; | &nbsp;</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计</span>
+                
+                <span title="字数统计">
+                  1,650 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长</span>
+                
+                <span title="阅读时长">
+                  8 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>仍旧是玩平衡杆游戏，不过这次用了更为强大的PPO2，看完之后不经感叹里面的思想真的是太奇妙了！相较于朴素的策略网络，多了好多新的trick，不敢想象发明这个算法的人是有多聪明。</p>
+<a id="more"></a>
+<p>代码参考自龙良曲的tensorflow2开源书籍。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span>  matplotlib</div><div class="line"><span class="keyword">from</span>    matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line">matplotlib.rcParams[<span class="string">'font.size'</span>] = <span class="number">18</span></div><div class="line">matplotlib.rcParams[<span class="string">'figure.titlesize'</span>] = <span class="number">18</span></div><div class="line">matplotlib.rcParams[<span class="string">'figure.figsize'</span>] = [<span class="number">9</span>, <span class="number">7</span>]</div><div class="line">matplotlib.rcParams[<span class="string">'font.family'</span>] = [<span class="string">'KaiTi'</span>]</div><div class="line">matplotlib.rcParams[<span class="string">'axes.unicode_minus'</span>]=<span class="keyword">False</span></div><div class="line"></div><div class="line">plt.figure()</div><div class="line"></div><div class="line"><span class="keyword">import</span>  gym,os</div><div class="line"><span class="keyword">import</span>  numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span>  tensorflow <span class="keyword">as</span> tf</div><div class="line"><span class="keyword">from</span>    tensorflow <span class="keyword">import</span> keras</div><div class="line"><span class="keyword">from</span>    tensorflow.keras <span class="keyword">import</span> layers,optimizers,losses</div><div class="line"><span class="keyword">from</span>    collections <span class="keyword">import</span> namedtuple</div><div class="line"><span class="keyword">from</span>    torch.utils.data <span class="keyword">import</span> SubsetRandomSampler,BatchSampler</div><div class="line"></div><div class="line">env = gym.make(<span class="string">'CartPole-v1'</span>)  <span class="comment"># 创建游戏环境</span></div><div class="line">env.seed(<span class="number">2222</span>)</div><div class="line">tf.random.set_seed(<span class="number">2222</span>)</div><div class="line">np.random.seed(<span class="number">2222</span>)</div><div class="line">os.environ[<span class="string">'TF_CPP_MIN_LOG_LEVEL'</span>] = <span class="string">'2'</span></div><div class="line"><span class="keyword">assert</span> tf.__version__.startswith(<span class="string">'2.'</span>)</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">gamma = <span class="number">0.98</span> <span class="comment"># 激励衰减因子</span></div><div class="line">epsilon = <span class="number">0.2</span> <span class="comment"># PPO误差超参数0.8~1.2</span></div><div class="line">batch_size = <span class="number">32</span> <span class="comment"># batch size</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 创建游戏环境</span></div><div class="line">env = gym.make(<span class="string">'CartPole-v0'</span>).unwrapped</div><div class="line">Transition = namedtuple(<span class="string">'Transition'</span>, [<span class="string">'state'</span>, <span class="string">'action'</span>, <span class="string">'a_log_prob'</span>, <span class="string">'reward'</span>, <span class="string">'next_state'</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Actor</span><span class="params">(keras.Model)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super(Actor, self).__init__()</div><div class="line">        <span class="comment"># 策略网络，也叫Actor网络，输出为概率分布pi(a|s)</span></div><div class="line">        self.fc1 = layers.Dense(<span class="number">100</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line">        self.fc2 = layers.Dense(<span class="number">2</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self, inputs)</span>:</span></div><div class="line">        x = tf.nn.relu(self.fc1(inputs))</div><div class="line">        x = self.fc2(x)</div><div class="line">        x = tf.nn.softmax(x, axis=<span class="number">1</span>) <span class="comment"># 转换成概率</span></div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Critic</span><span class="params">(keras.Model)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super(Critic, self).__init__()</div><div class="line">        <span class="comment"># 偏置b的估值网络，也叫Critic网络，输出为v(s)</span></div><div class="line">        self.fc1 = layers.Dense(<span class="number">100</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line">        self.fc2 = layers.Dense(<span class="number">1</span>, kernel_initializer=<span class="string">'he_normal'</span>)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call</span><span class="params">(self, inputs)</span>:</span></div><div class="line">        x = tf.nn.relu(self.fc1(inputs))</div><div class="line">        x = self.fc2(x)</div><div class="line">        <span class="keyword">return</span> x</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">PPO</span><span class="params">()</span>:</span></div><div class="line">    <span class="comment"># PPO算法主体</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        super(PPO, self).__init__()</div><div class="line">        self.actor = Actor() <span class="comment"># 创建Actor网络</span></div><div class="line">        self.critic = Critic() <span class="comment"># 创建Critic网络</span></div><div class="line">        self.buffer = [] <span class="comment"># 数据缓冲池</span></div><div class="line">        self.actor_optimizer = optimizers.Adam(<span class="number">1e-3</span>) <span class="comment"># Actor优化器</span></div><div class="line">        self.critic_optimizer = optimizers.Adam(<span class="number">3e-3</span>) <span class="comment"># Critic优化器</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_action</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="comment"># 送入状态向量，获取策略: [4]</span></div><div class="line">        s = tf.constant(s, dtype=tf.float32)</div><div class="line">        <span class="comment"># s: [4] =&gt; [1,4]</span></div><div class="line">        s = tf.expand_dims(s, axis=<span class="number">0</span>)</div><div class="line">        <span class="comment"># 获取策略分布: [1, 2]</span></div><div class="line">        prob = self.actor(s)</div><div class="line">        <span class="comment"># 从类别分布中采样1个动作, shape: [1]</span></div><div class="line">        a = tf.random.categorical(tf.math.log(prob), <span class="number">1</span>)[<span class="number">0</span>]</div><div class="line">        a = int(a)  <span class="comment"># Tensor转数字</span></div><div class="line">        <span class="keyword">return</span> a, float(prob[<span class="number">0</span>][a]) <span class="comment"># 返回动作及其概率</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_value</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="comment"># 送入状态向量，获取策略: [4]</span></div><div class="line">        s = tf.constant(s, dtype=tf.float32)</div><div class="line">        <span class="comment"># s: [4] =&gt; [1,4]</span></div><div class="line">        s = tf.expand_dims(s, axis=<span class="number">0</span>)</div><div class="line">        v = self.critic(s)[<span class="number">0</span>]</div><div class="line">        <span class="keyword">return</span> float(v) <span class="comment"># 返回v(s)</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">store_transition</span><span class="params">(self, transition)</span>:</span></div><div class="line">        <span class="comment"># 存储采样数据</span></div><div class="line">        self.buffer.append(transition)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">optimize</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="comment"># 优化网络主函数</span></div><div class="line">        <span class="comment"># 从缓存中取出样本数据，转换成Tensor</span></div><div class="line">        state = tf.constant([t.state <span class="keyword">for</span> t <span class="keyword">in</span> self.buffer], dtype=tf.float32)</div><div class="line">        action = tf.constant([t.action <span class="keyword">for</span> t <span class="keyword">in</span> self.buffer], dtype=tf.int32)</div><div class="line">        action = tf.reshape(action,[<span class="number">-1</span>,<span class="number">1</span>])</div><div class="line">        reward = [t.reward <span class="keyword">for</span> t <span class="keyword">in</span> self.buffer]</div><div class="line">        old_action_log_prob = tf.constant([t.a_log_prob <span class="keyword">for</span> t <span class="keyword">in</span> self.buffer], dtype=tf.float32)</div><div class="line">        old_action_log_prob = tf.reshape(old_action_log_prob, [<span class="number">-1</span>,<span class="number">1</span>])</div><div class="line">        <span class="comment"># 通过MC方法循环计算R(st)</span></div><div class="line">        R = <span class="number">0</span></div><div class="line">        Rs = []</div><div class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> reward[::<span class="number">-1</span>]:</div><div class="line">            R = r + gamma * R</div><div class="line">            Rs.insert(<span class="number">0</span>, R)</div><div class="line">        Rs = tf.constant(Rs, dtype=tf.float32)</div><div class="line">        <span class="comment"># 对缓冲池数据大致迭代10遍</span></div><div class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(round(<span class="number">10</span>*len(self.buffer)/batch_size)):</div><div class="line">            <span class="comment"># 随机从缓冲池采样batch size大小样本</span></div><div class="line">            index = np.random.choice(np.arange(len(self.buffer)), batch_size, replace=<span class="keyword">False</span>)</div><div class="line">            <span class="comment"># 构建梯度跟踪环境</span></div><div class="line">            <span class="keyword">with</span> tf.GradientTape() <span class="keyword">as</span> tape1, tf.GradientTape() <span class="keyword">as</span> tape2:</div><div class="line">                <span class="comment"># 取出R(st)，[b,1]</span></div><div class="line">                v_target = tf.expand_dims(tf.gather(Rs, index, axis=<span class="number">0</span>), axis=<span class="number">1</span>)</div><div class="line">                <span class="comment"># 计算v(s)预测值，也就是偏置b</span></div><div class="line">                v = self.critic(tf.gather(state, index, axis=<span class="number">0</span>))</div><div class="line">                delta = v_target - v <span class="comment"># 计算Advantage function (收益reward减去基准baseline) </span></div><div class="line">                advantage = tf.stop_gradient(delta) <span class="comment"># 断开梯度连接 </span></div><div class="line">                <span class="comment"># 由于TF的gather_nd与pytorch的gather功能不一样，需要构造</span></div><div class="line">                <span class="comment"># gather_nd需要的坐标参数，indices:[b, 2]</span></div><div class="line">                <span class="comment"># pi_a = pi.gather(1, a) # pytorch只需要一行即可实现</span></div><div class="line">                a = tf.gather(action, index, axis=<span class="number">0</span>) <span class="comment"># 取出batch的动作at</span></div><div class="line">                <span class="comment"># batch的动作分布pi(a|st)</span></div><div class="line">                pi = self.actor(tf.gather(state, index, axis=<span class="number">0</span>)) </div><div class="line">                indices = tf.expand_dims(tf.range(a.shape[<span class="number">0</span>]), axis=<span class="number">1</span>)</div><div class="line">                indices = tf.concat([indices, a], axis=<span class="number">1</span>)</div><div class="line">                pi_a = tf.gather_nd(pi, indices)  <span class="comment"># 动作的概率值pi(at|st), [b]</span></div><div class="line">                pi_a = tf.expand_dims(pi_a, axis=<span class="number">1</span>)  <span class="comment"># [b]=&gt; [b,1] </span></div><div class="line">                <span class="comment"># 重要性采样</span></div><div class="line">                ratio = (pi_a / tf.gather(old_action_log_prob, index, axis=<span class="number">0</span>))</div><div class="line">                surr1 = ratio * advantage</div><div class="line">                surr2 = tf.clip_by_value(ratio, <span class="number">1</span> - epsilon, <span class="number">1</span> + epsilon) * advantage</div><div class="line">                <span class="comment"># PPO误差函数</span></div><div class="line">                policy_loss = -tf.reduce_mean(tf.minimum(surr1, surr2))</div><div class="line">                <span class="comment"># 对于偏置v来说，希望与MC估计的R(st)越接近越好</span></div><div class="line">                value_loss = losses.MSE(v_target, v)</div><div class="line">            <span class="comment"># 优化策略网络</span></div><div class="line">            grads = tape1.gradient(policy_loss, self.actor.trainable_variables)</div><div class="line">            self.actor_optimizer.apply_gradients(zip(grads, self.actor.trainable_variables))</div><div class="line">            <span class="comment"># 优化偏置值网络</span></div><div class="line">            grads = tape2.gradient(value_loss, self.critic.trainable_variables)</div><div class="line">            self.critic_optimizer.apply_gradients(zip(grads, self.critic.trainable_variables))</div><div class="line"></div><div class="line">        self.buffer = []  <span class="comment"># 清空已训练数据</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    agent = PPO()</div><div class="line">    returns = [] <span class="comment"># 统计总回报</span></div><div class="line">    total = <span class="number">0</span> <span class="comment"># 一段时间内平均回报</span></div><div class="line">    <span class="keyword">for</span> i_epoch <span class="keyword">in</span> range(<span class="number">200</span>): <span class="comment"># 训练回合数</span></div><div class="line">        state = env.reset() <span class="comment"># 复位环境</span></div><div class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">500</span>): <span class="comment"># 最多考虑500步</span></div><div class="line">            <span class="comment"># 通过最新策略与环境交互</span></div><div class="line">            action, action_prob = agent.select_action(state)</div><div class="line">            next_state, reward, done, _ = env.step(action)</div><div class="line">            <span class="comment"># 构建样本并存储</span></div><div class="line">            trans = Transition(state, action, action_prob, reward, next_state)</div><div class="line">            agent.store_transition(trans)</div><div class="line">            state = next_state <span class="comment"># 刷新状态</span></div><div class="line">            total += reward <span class="comment"># 累积激励</span></div><div class="line">            env.render()</div><div class="line">            <span class="keyword">if</span> done: <span class="comment"># 合适的时间点训练网络</span></div><div class="line">                <span class="keyword">if</span> len(agent.buffer) &gt;= batch_size:</div><div class="line">                    agent.optimize() <span class="comment"># 训练网络</span></div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> i_epoch % <span class="number">20</span> == <span class="number">0</span>: <span class="comment"># 每20个回合统计一次平均回报</span></div><div class="line">            returns.append(total/<span class="number">20</span>)</div><div class="line">            total = <span class="number">0</span></div><div class="line">            print(i_epoch, returns[<span class="number">-1</span>])</div><div class="line"></div><div class="line">    print(np.array(returns))</div><div class="line">    plt.figure()</div><div class="line">    plt.plot(np.arange(len(returns))*<span class="number">20</span>, np.array(returns))</div><div class="line">    plt.plot(np.arange(len(returns))*<span class="number">20</span>, np.array(returns), <span class="string">'s'</span>)</div><div class="line">    plt.xlabel(<span class="string">'回合数'</span>)</div><div class="line">    plt.ylabel(<span class="string">'总回报'</span>)</div><div class="line">    plt.savefig(<span class="string">'ppo-tf-cartpole.svg'</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<p>网络train起来不太稳定，可能需要试个几次效果才会好。（RL和GAN都是出了名的难train）</p>
+<p>不过相较于上一篇的朴素的策略网络，这次的训练速度要快许多，因为上次是得到一个轨迹后train一次，得到一个轨迹后train一次。。。这是因为train过一次后，模型就变了。现在是得到一把轨迹放到缓存池里，然后从缓存池里每次捞batch_size个出来train。这也正是PPO算法的优势之一，其中的关键思想就是重要性采样：如何从另一个分布来估计原分布的期望（从这也可以看出统计学的威力），使得旧数据得到复用。</p>
+<p>和之前另一个不同点是这次代码中加入了Critic，用来估计值网络，作为基准，计算Advantage function (收益reward减去基准baseline) ，上一篇中曾提到 <code>当回报是正的，就提高做过的动作的概率，反之就降低</code> ，其实上一篇的代码没有做到这句话，因为没有减去基准，所以不管回报好坏，做过的动作的概率都是提高的（这对没做过的动作其实是不公平的），现在就没有这个问题了。</p>
+<p>最后一点trick是PPO2算法中对于损失函数的定义。由于用了另一个分布去近似近似原分布，自然不希望二者差的太多，所以在PPO 算法中就用KL Divergence去度量两个分布之间的差距。PPO2则没有计算KL散度，而用了clip裁剪的方法做到了同样的事。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>donate the author</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="陆轩韬 WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="陆轩韬 Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/强化学习/" rel="tag"><i class="fa fa-tag"></i> 强化学习</a>
+          
+            <a href="/tags/tensorflow2/" rel="tag"><i class="fa fa-tag"></i> tensorflow2</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/07/15/强化学习-策略网络/" rel="next" title="强化学习-策略网络">
+                <i class="fa fa-chevron-left"></i> 强化学习-策略网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/16/强化学习-DQN/" rel="prev" title="强化学习-DQN">
+                强化学习-DQN <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzM1Mi85OTA4"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="陆轩韬" />
+          <p class="site-author-name" itemprop="name">陆轩韬</p>
+           
+              <p class="site-description motion-element" itemprop="description">一只等待进化为程序猿的猴子</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luxuantao" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+          
+		
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://luxuantao.github.io/web/index.html" title="个人主页 @ 陆轩韬" target="_blank">个人主页 @ 陆轩韬</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://jxtxzzw.com/" title="jxtxzzw空间 @ 张臻炜" target="_blank">jxtxzzw空间 @ 张臻炜</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user-o" aria-hidden="true"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">陆轩韬</span>
+</div>
+
+<!--
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+-->
+
+<!--
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+-->
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共55.9k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("56AdvCz2CdFFai1IYTnP9VvW-gzGzoHsz", "lUYIn1nVPECkvjqjN7cLvimt");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
