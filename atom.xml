@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://luxuantao.github.io/"/>
-  <updated>2021-05-20T02:22:49.038Z</updated>
+  <updated>2023-05-21T03:28:12.381Z</updated>
   <id>https://luxuantao.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的坎坷秋(春)招求职之路</title>
+    <link href="https://luxuantao.github.io/2023/05/21/%E6%88%91%E7%9A%84%E5%9D%8E%E5%9D%B7%E7%A7%8B-%E6%98%A5-%E6%8B%9B%E6%B1%82%E8%81%8C%E4%B9%8B%E8%B7%AF/"/>
+    <id>https://luxuantao.github.io/2023/05/21/我的坎坷秋-春-招求职之路/</id>
+    <published>2023-05-21T03:26:28.000Z</published>
+    <updated>2023-05-21T03:28:12.381Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在是23年5月份，工作已基本有了着落，回首过去的几个月，竟发现这条求职路是如此的坎坷。</p><p>我的秋招是从22年的8月份(研二末)开始的，当时个人情况是这样:本硕985;有一篇COLING长文一作，一篇评测论文一作，两篇B类论文二作，都已发表;一个第一发明人的专利待授权;国内外(深度学习)算法竞赛拿了近十个top3的奖项;力扣刷了一千多的题目;正在字节AILAB实习(已有半年)。</p><p>看到这个个人情况是不是觉得我找工作应该很容易？其实我自己都这么觉得。。但后面事情的发展也确实出乎了我的意料。</p><p>阿里，腾讯，蚂蚁金服，米哈游在投了简历或笔试后就寄了。。百度我没投，因为确实对这家公司没好感。</p><p>我的第一轮面试是从MSRA开始的，这是我最想去的地方，投的岗位是RSDE，个人觉得自己科研和工程上的加点差不多是30:70，所以RSDE应该是最适合我的。面试开始前是四轮笔试，当然不用全部参加，它会取四次中的最高分，但每次都看不到分数，所以保险起见我全参加了，难度不大，个人觉得至少有一次拿到了满分。后面很幸运收到了面试邀请，我认识的人里面我是唯一一个收到MSRA面试邀请的。。面试总共六轮，前三轮纯coding，四到五纯research，最后一轮aa面也就是部门领导面。三轮coding面很顺利，难度基本在力扣medium的样子，加一起做了八九道题，基本全部AC。两轮research面也很顺利，就是聊paper，由于面试邮件里看得到面试官名字，我事先查了下他们的个人信息(发现全员狠人。。都是国内外名校毕业的，paper一堆。。比我在字节AILAB的同事们还要猛)，但是人都感觉挺不错，很有修养，学术底蕴深厚，短短半个多小时的交流时间也能从他们那里学到不少知识。之后就到了最憋屈的aa面，面试官是清华本硕，在微软已经做了十多年了，偏工程。上来的时候一脸笑容，问了我本科期间的实习情况(当时我在字节搞测开)，持续集成相关的用过吗(正巧没有)，问了道开放智力题(就是这个一直没答好。。)，最后十分钟给了一道数学题(做出来了)，但是他的笑容却早就消失了。。总共面了一个小时。之后官网一直显示是泡池子的状态，焦急的等了两个月后，寄。</p><p>等待结果的期间我也没有闲着，找了本科在美团的学姐帮我内推了下，顺利通过美团笔试后也开始了面试。前两轮强度拉满，coding难度比微软高，智力题和数学题也较难，基本到了我的智力极限，不过幸运的是coding全AC，智力和数学题全写出。之后又到了最憋屈的部门领导面，这是我体验最差的一次了，全程被diss，扣你简历的细节，进行了十分钟就问你还有什么问题吗(呵呵)，就像是kpi面走个流程。一天后感谢信。</p><p>学姐知道了后问我想不想试试拼多多，我其实并不想去，但还是抱着试试看的心态答应了，她帮我找了她在拼多多的同学做了内推(PDD今年只招内推的)，但恶心的是部门不能自己选。。我是做NLP的，结果分到了推荐组，三轮面试下来和面试官的技术栈都不在一个频道，所以面试官就只能通过coding和智力题来做抉择。前两轮难度较小，最后一轮难度和美团差不多，不过还是幸运的都AC和答出来了，hr面后，被告知方向不对口，寄。。。</p><p>微软，美团，拼多多寄了之后，字节这边也传来了噩耗，AILAB我认识的参加转正答辩的同学全寄了，我当时没有参加转正答辩，因为我leader的意思是投了paper以后再参加可能会稳一点，但是你们也知道，paper这种东西是可遇不可求的。。在chatgpt出来之后，AILAB原本的科研任务基本都停了下来，发paper就更不可能了，当时的我心灰意冷。。</p><p>这时的我只能将目光投向一些之前从来没考虑过的公司。携程和小红书。携程的笔试我拿了满分，之后的面试很水，三轮面试一道题都没做，hr面后再通过英语测评，没多久就发了offer，然后就逼签三方。给我开的价是硕士应届最高一档(但携程的工资普遍较低，所以也没多少)。想到就业环境这么差，我当时也就签了作为保底。此时小红书已经通过了两轮面试，在约第三轮的时候我主动拒绝了，因为在我心里携程和小红书是一个梯队的，选了一个也就没必要违约去另一个。之后我便去携程提前实习打算了解下情况(字节这边没有离职，请了长假)，所在的组很核心，压力还是比较大的，但主要是技术栈我确实不太喜欢(大部分是tf1的code)，代码看得我脑壳痛。你说周三周五可以居家办公？对，有的，但是和你应届生没关系，十几个人的组里只有一两个人可以，大部分人还是要到岗的，而且居家办公强制写日报。所以干了一周后我就找借口溜了，想看看别的机会。</p><p>时间来到春招期间，上海人工智能实验室和我约了面试，总共五轮技术面，说实话也很水，没有做题，纯聊简历，五轮之后又等了很久才发了offer，薪水和携程卧龙凤雏。但毕竟是事业单位，相对轻松些，所以此时的我还是更倾向于去这。</p><p>与此同时，我导师也找到了我，给我推荐了他合作的公司，公司不大但是快上市了，想要我们实验室的同学，我就抱着试试看的心态参加了面试，只有一轮hr面，无技术面。开的薪水高的离谱，比薪资天花板拼多多还顶。。但是稳重起见，我也没有急于做决定。</p><p>期间我又回到了字节继续实习，和同事们聊了聊找工作进展(说个题外话，字节AILAB的实习体验太好了，这里全是双商高的聪明人，同事们对我也都非常非常好！！！就是可惜转不了正)，我leader知道了后说腾讯那边或许还有机会，有小概率会有一个hc，他有认识的同门师兄弟在那儿，可以推荐一下，然后就开始了面试，目前已进行了三轮，难度适中，但是由于是微信事业群，面试轮数会很多，后面不知道还会有多少轮。。而且有hc的概率也并不大，所以我继续在看其他机会。</p><p>23年4月份，实验室的一位同门看到了小红书在招人，联系人是王树森(我的偶像)，他去参加面试并顺利拿到了offer。我想到之前小红书并没有挂掉而是主动终止了，所以就问了下能否继续面试，幸运的是小红书这边同意了，而且特地安排王树森作为我第三轮的面试官，相聊甚欢，顺利通过。hr面后发了offer，薪水相当可观。深思熟虑后，目前大概率还是会去这里。虽然大小周会比较累，但是有王树森和自己的实验室同学，足矣。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;现在是23年5月份，工作已基本有了着落，回首过去的几个月，竟发现这条求职路是如此的坎坷。&lt;/p&gt;
+&lt;p&gt;我的秋招是从22年的8月份(研二末)开始的，当时个人情况是这样:本硕985;有一篇COLING长文一作，一篇评测论文一作，两篇B类论文二作，都已发表;一个第一发明人的专利
+      
+    
+    </summary>
+    
+      <category term="随笔" scheme="https://luxuantao.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>强化学习-A3C</title>
@@ -432,29 +456,6 @@
     
       <category term="c++" scheme="https://luxuantao.github.io/categories/c/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>JetsonTX2自主无人车原型开发</title>
-    <link href="https://luxuantao.github.io/2019/01/24/JetsonTX2%E8%87%AA%E4%B8%BB%E6%97%A0%E4%BA%BA%E8%BD%A6%E5%8E%9F%E5%9E%8B%E5%BC%80%E5%8F%91/"/>
-    <id>https://luxuantao.github.io/2019/01/24/JetsonTX2自主无人车原型开发/</id>
-    <published>2019-01-24T08:46:26.000Z</published>
-    <updated>2019-01-24T10:16:33.393Z</updated>
-    
-    <content type="html"><![CDATA[<p>本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android</p><p>项目github地址：<a href="https://github.com/luxuantao/jetsontx2_car" target="_blank" rel="external">https://github.com/luxuantao/jetsontx2_car</a></p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当初搞这个项目，纯粹是我一厢情愿。自从有了JetsonTX2开发板，就想着这么又贵又强的东西不用怎么行。断断续续搞了一学期，也算学了不少新东西。队里加我总共四个人，其中三个不干活的（没错，从头到尾只有我一个人在瞎忙活）。你问我有怨气吗，自然是有的，这学期第13周的时候，我把物体识别的任务交给了一位队友，就想着后面要期末考所以特地提前了些，结果他硬生生地拖到第十九周学期结束，都没有碰一下开发板。罢了，给他学习的机会他不要，又能怪谁呢？而且我在一开始申报项目时就做好了一带三的准备，那么好，opencv，caffe，arduino，android，全都由我一个人负责。</p><p>我不贴代码，arduino和android的全部代码可以从<a href="https://github.com/luxuantao/jetsontx2_car" target="_blank" rel="external">https://github.com/luxuantao/jetsontx2_car</a> 获取。</p><p>这是一篇开发手札，主要是写给我自己看的，记录一下开发中遇到的问题。</p><h2 id="已完成的目标"><a href="#已完成的目标" class="headerlink" title="已完成的目标"></a>已完成的目标</h2><ul><li>JetsonTX2架设在小车上，调用usb摄像头，能够识别出20种不同的物体，包括人，车，显示屏等等，并能将带有标记的流（实际上传的是图片）传回手机</li><li>用于控制小车和显示回传视频的app</li><li>小车用anduino开发，有两种运行模式：手动控制行驶（由app和anduino蓝牙通信实现）和自动行驶（由一组超声波模块+三组红外探测模块实现避障），可随时通过app切换模式</li></ul><h2 id="Arduino小车部分"><a href="#Arduino小车部分" class="headerlink" title="Arduino小车部分"></a>Arduino小车部分</h2><p>最先做的是小车，网上买的小车零件，买回来后要自己全部一个个拼接起来，比如扩展板上，每一个排角，电阻都要自己焊上去。这里要感谢我的爸爸，他虽然不怎么懂编程，但是焊接东西他很拿手，帮我一个部件一个部件的焊好，前后焊了有一周的时间，感谢我的爸爸，没有他，第一步都没法完成。</p><p>小车上最重要的是这些模块：正前方的一组超声波云台模块，正前方/左前方/右前方各一组红外探测模块，以及一组蓝牙模块。为什么正前方又要装超声波又要装红外？因为超声波打的距离比较远，能提早做出判断，但是在车上的位置比较高，打不到较低的地方，所以我在低处补了一组红外探测模块，做两手准备。而左前方和右前方的红外探测模块是后来加的，因为当小车以接近四十五度角接近前方障碍时，无法通过正前方的超声波和红外探测到，所以我在左前方和右前方各补了一个红外，效果不错。</p><h2 id="JetsonTX2部分"><a href="#JetsonTX2部分" class="headerlink" title="JetsonTX2部分"></a>JetsonTX2部分</h2><p>NVIDIA的JetsonTX2是比JetsonTX1性能更强的一块开发板（不过最近好像又有了一块比JetsonTX2还要厉害的开发板）。说它是开发板，其实并不准确，它其实是一台嵌入式计算机，由于其GPU的强大，专门用于做图像处理方面的工作。</p><p>刚到手的JetsonTX2是一台裸机，内置ubuntu16.04操作系统，看上去就和普通的计算机没什么两样。要让它变得更强，先要在NVIDIA的官网上下载JetPack开发包，装好后，就有了CUDA等一系列基础设施。</p><p>关于图像识别，我用的是<code>Faster R-CNN</code> ，但是用它之前，先要装好<code>Caffe</code> 和 <code>PyCaffe</code> ，但是装<code>Caffe</code> 之前，先要装好<code>opencv</code> 。是不是感觉挺麻烦的？没错，难就难在这，有不少依赖要装，而且要翻墙。给出一个很不错的博客，我基本上就是照着这个博客中所说的一步步做的，装了两天（其中caffe装了两遍，注意一定要用python2）。</p><p>opencv3安装：<a href="https://jkjung-avt.github.io/opencv3-on-tx2/" target="_blank" rel="external">https://jkjung-avt.github.io/opencv3-on-tx2/</a></p><p>caffe安装：<a href="https://jkjung-avt.github.io/caffe-on-tx2/" target="_blank" rel="external">https://jkjung-avt.github.io/caffe-on-tx2/</a></p><p>opencv3和caffe都是下载源码在本地编译，所以很慢很慢。。。</p><p>然后就是套<code>Faster R-CNN</code>：<a href="https://jkjung-avt.github.io/faster-rcnn/" target="_blank" rel="external">https://jkjung-avt.github.io/faster-rcnn/</a> ，用到了别人训练好的模型，细心的你会发现github上说这个模型已经废弃了，现在有更快的模型可以用。没错，<code>Faster R-CNN</code> 虽然有个<code>Faster</code> 但是它的速度真心不快，0.9秒识别一张图片（后面会提到如何加速），但是这个模型的准确度非常好，比起别的模型更具优势，所以我还是采用了这个模型。</p><p>那如何做到更快呢，<a href="https://jkjung-avt.github.io/making-frcn-faster/" target="_blank" rel="external">https://jkjung-avt.github.io/making-frcn-faster/</a> 里面提到可以用<code>GoogLeNet</code>换掉速度较慢的<code>VGG16</code> ，也就是对神经网络中的某一层做了改动，但是简简单单的这一步带来的改良是巨大的，在JetsonTX2开最佳性能的情况下<code>sudo nvpmodel -m 0</code>，可以做到0.5秒识别一张图片。</p><p>视频流可以选择使用板载摄像头或者自己搞个usb摄像头，我都试了下，运行后，opencv会在JetsonTX2上会新建一个窗口，里面实时显示带有识别框的图片，每0.5秒换一次图片。</p><h2 id="Android部分"><a href="#Android部分" class="headerlink" title="Android部分"></a>Android部分</h2><p>手机是通过蓝牙和小车交互，但是由于和JetsonTX2需要进行图片流的传输，数据量较大，所以采用Wifi，经TCP传输，socket通信。</p><p><a href="https://jkjung-avt.github.io/faster-rcnn/" target="_blank" rel="external">https://jkjung-avt.github.io/faster-rcnn/</a> 中提到的<code>demo_camera.py</code> 自然不包括传图片的回手机的部分，这个需要自己实现。原本代码中用于显示在窗口中的每一张图片其实是一个三维的<code>ndarray</code>（长、宽和RGB），我的做法是把这个<code>ndarray</code>转换为照片先存在本地，然后再读取这个图片把它传输出去。这里有个坑，<code>ndarray</code>中的某两个颜色次序（好像是G和B）要反一下，不然生成的图片你会觉得颜色不对劲。</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>我也试了试<code>yolov3</code>，<a href="https://jkjung-avt.github.io/yolov3/" target="_blank" rel="external">https://jkjung-avt.github.io/yolov3/</a> ，但是实际效果很差，主要是延时太久，理论上<code>yolov3</code> 的速度应该是最快的，可能是有什么没注意到的地方，今后再说。</p><p>PS：很多事情只能靠自己。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;本科生培育的项目，目前已基本成型，涉及的技术包括：opencv，caffe，arduino，android&lt;/p&gt;
-&lt;p&gt;项目github地址：&lt;a href=&quot;https://github.com/luxuantao/jetsontx2_car&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/luxuantao/jetsontx2_car&lt;/a&gt;&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="JetsonTX2" scheme="https://luxuantao.github.io/categories/JetsonTX2/"/>
-    
-    
-      <category term="机器视觉" scheme="https://luxuantao.github.io/tags/%E6%9C%BA%E5%99%A8%E8%A7%86%E8%A7%89/"/>
     
   </entry>
   
